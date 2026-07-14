@@ -8,10 +8,10 @@ import AdmZip from "adm-zip";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "out");
 
-// --- Canonical PREP prompt parity ---
+// --- Canonical PREP prompt parity (bundled copy) ---
 function canonicalPrompt(): string {
   let s = readFileSync(
-    join(root, "..", "prep", "prompt", "prep.en.md"),
+    join(root, "src", "content", "prep-prompt.md"),
     "utf8"
   ).replace(/\r\n/g, "\n");
   s = s.replace(/^<!--[\s\S]*?-->\n\n/, "").replace(/\n+$/, "");

@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
-// Rendered at build time from the canonical SPEC.md in the standard repo.
+// Rendered at build time from the bundled copy of the canonical SPEC.md.
 function specHtml(): string {
-  const path = join(process.cwd(), "..", "prep", "SPEC.md");
+  const path = join(process.cwd(), "src", "content", "spec.md");
   const md = readFileSync(path, "utf8");
   marked.setOptions({ gfm: true });
   return marked.parse(md) as string;

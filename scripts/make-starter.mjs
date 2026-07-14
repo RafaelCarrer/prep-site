@@ -9,8 +9,8 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const today = new Date().toISOString().slice(0, 10);
 
-// Exact canonical prompt (from the standard repo, sibling folder).
-const promptSrc = join(root, "..", "prep", "prompt", "prep.en.md");
+// Exact canonical prompt (bundled copy inside this repo).
+const promptSrc = join(root, "src", "content", "prep-prompt.md");
 const prompt = readFileSync(promptSrc, "utf8").replace(/\r\n/g, "\n");
 
 const idLine =

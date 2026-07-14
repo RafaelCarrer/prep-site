@@ -8,3 +8,5 @@ next-env.d.ts
 public/slides/*.webp
 public/slides/*.jpg
 public/prep-starter.zip
+
+.vercel
