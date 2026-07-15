@@ -5,7 +5,7 @@ export const GITHUB_FOUNDER = "https://github.com/RafaelCarrer";
 export const AMETI = "https://ameti.app";
 export const EMAIL = "hello@prep.md";
 export const STARTER_ZIP = "/prep-starter.zip";
-export const READ_COMMAND = "Read my Projects folder";
+export const READ_COMMAND = "Read my PREP folder";
 
 export const slides = [
   {
@@ -40,14 +40,23 @@ export const home = {
     {
       n: "2",
       heading: "Drop it into your cloud drive",
-      body: "Unzip it and move the Projects folder to Google Drive, Dropbox, OneDrive — anywhere your AI can read files.",
+      body: "Unzip it and move the PREP folder to Google Drive, Dropbox, OneDrive — anywhere your AI can read files.",
     },
     {
       n: "3",
       heading: "Tell your AI to read it",
-      body: "In ChatGPT, Claude, Gemini — any chat with file access — say the command below. It reads the folder and picks up where you left off.",
+      body: "In ChatGPT, Claude, Gemini — any chat with file access — say the line below. The AI reads the folder, learns the standard from it, and you're set.",
     },
   ],
+  commandsHeading: "Then talk normally — and save when you want to",
+  commandsIntro:
+    "PREP never nags you to save. You have the conversation you want; when it's worth keeping, you say so:",
+  commands: `prep save             save this conversation into the current project
+prep open <name>      open a project and continue where it left off
+prep list             list every project you have
+prep new <name>       start a new project deliberately
+prep check            verify a folder against its map
+prep archive <name>   file a finished project away`,
   valueHeading: "What you just set up",
   values: [
     "Switch chats — or switch AIs entirely — and the work continues.",
@@ -55,10 +64,11 @@ export const home = {
     "Plain text and folders. Nothing locked inside one app.",
   ],
   treeHeading: "A project at a glance",
-  tree: `Sunday Sourdough/
-├── PREP.md      ← what this is, where it stands, what to read
-├── LOG.md       ← append-only history, one dated line per session
-└── memory/      ← a full snapshot of each session`,
+  tree: `PREP/                        ← all your projects live here
+└── Sunday Sourdough/
+    ├── PREP.md      ← what this is, where it stands, what to read
+    ├── LOG.md       ← append-only history, one dated line per session
+    └── memory/      ← a full snapshot of each session`,
   treeNote:
     "PREP.md is the entry point. Its MAP tells the AI what to read and when, so it boots light instead of scanning everything. Optional files like knowledge/, TOOLS.md and DECISIONS.md join only when a project needs them.",
   useCasesHeading: "One standard, three kinds of project",

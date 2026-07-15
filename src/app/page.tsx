@@ -58,6 +58,18 @@ export default function HomePage() {
 
       <hr className="section-rule" />
 
+      <section aria-labelledby="commands-heading">
+        <h2 id="commands-heading" className="section-heading">
+          {home.commandsHeading}
+        </h2>
+        <p className="section-intro">{home.commandsIntro}</p>
+        <div className="code-block">
+          <pre>{home.commands}</pre>
+        </div>
+      </section>
+
+      <hr className="section-rule" />
+
       <section aria-labelledby="value-heading">
         <h2 id="value-heading" className="section-heading">
           {home.valueHeading}

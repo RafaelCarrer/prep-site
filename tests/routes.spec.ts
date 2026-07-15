@@ -32,15 +32,19 @@ test("prompt integrity: embedded prompt matches canonical", () => {
   const c = canonicalPrompt();
   const s = storedPrompt();
   assert.equal(s, c);
-  assert.ok(s.startsWith("# PREP v0.2"));
+  assert.ok(s.startsWith("# PREP v0.3"));
   assert.ok(s.includes("https://prep.md"));
   assert.ok(!s.includes("ameti.app/prep"));
+  // v0.3: commands exist and the no-nagging rule is present
+  assert.ok(s.includes("prep save"));
+  assert.ok(s.includes("Never offer to save"));
+  assert.ok(s.includes("default name `PREP/`"));
 });
 
 // --- Built static output ---
 const pages = [
-  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my Projects folder", "prep-starter.zip"] },
-  { file: "spec/index.html", must: ["PREP — Specification v0.2", "TOOLS.md", "Security"] },
+  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "prep-starter.zip", "prep save"] },
+  { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
 ];
 
@@ -79,15 +83,15 @@ test("starter zip built, well-formed, prompt exact", () => {
   const zip = new AdmZip(zipPath);
   const names = zip.getEntries().map((e) => e.entryName);
   for (const need of [
-    "Projects/PREP.md",
-    "Projects/LOG.md",
-    "Projects/prep-prompt.md",
-    "Projects/README.txt",
+    "PREP/PREP.md",
+    "PREP/LOG.md",
+    "PREP/prep-prompt.md",
+    "PREP/README.txt",
   ]) {
     assert.ok(names.includes(need), `zip missing ${need}`);
   }
   const embedded = zip
-    .readAsText("Projects/prep-prompt.md")
+    .readAsText("PREP/prep-prompt.md")
     .replace(/\r\n/g, "\n")
     .replace(/^<!--[\s\S]*?-->\n\n/, "")
     .replace(/\n+$/, "");

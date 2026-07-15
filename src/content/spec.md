@@ -1,9 +1,9 @@
-# PREP — Specification v0.2
+# PREP — Specification v0.3
 
 > An open standard for AI-readable project folders.
-> Prep your project once; any AI picks up exactly where you left off.
+> Prepare once. Continue anywhere.
 
-**Status:** Draft v0.2 · **Author:** Rafael Carrer ([AMETI](https://ameti.app)) · **License:** CC BY 4.0
+**Status:** Draft v0.3 · **Author:** Rafael Carrer ([AMETI](https://ameti.app)) · **License:** CC BY 4.0
 **Home:** https://prep.md
 
 The key words MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY in this document
@@ -45,7 +45,7 @@ Sunday Sourdough/
 **PREP.md** — the entry point. The first file any AI reads.
 
 ```markdown
-> This project follows the PREP standard v0.2 — https://prep.md
+> This project follows the PREP standard v0.3 — https://prep.md
 
 # Sunday Sourdough
 
@@ -136,7 +136,7 @@ and any future model.
 knows the convention in play and where to learn it:
 
 ```
-> This project follows the PREP standard v0.2 — https://prep.md
+> This project follows the PREP standard v0.3 — https://prep.md
 ```
 
 It then contains these sections, in this order:
@@ -194,9 +194,15 @@ any reader recognises them. When present, they MUST be listed in the MAP.
 
 ## 8. The root folder and the root index
 
-All of a user's PREP projects SHOULD live inside one **root folder**
-(default name: `Projects/`). This is how a person finds their work again
-without remembering where anything is.
+All of a user's PREP projects SHOULD live inside one **root folder**,
+whose default name is **`PREP/`**. This is how a person finds their work
+again without remembering where anything is — and a folder named `PREP`
+is recognisable at a glance among ordinary cloud-drive folders.
+
+The root MAY carry any name the user prefers. A reader MUST identify the
+root by the `PREP.md` inside it, never by the folder name alone. (The
+default avoids a common collision: many people already keep a folder
+called `Projects`.)
 
 The root folder is itself a PREP project. Its `PREP.md` describes the
 collection, and its **MAP is the catalogue**: one line per project —
@@ -217,6 +223,25 @@ updated (and the write verified). This keeps the catalogue true.
 An implementation of PREP (a prompt, a tool, an app) SHOULD follow these
 flows. This is what turns the file convention into a usable experience.
 
+### 9.0 Commands
+
+An implementation SHOULD accept this command set, and SHOULD also accept
+plain phrasing for the same intent ("save this", "what do I have?").
+
+```
+prep save             save this conversation into the current project
+prep open <name>      open a project and continue where it left off
+prep list             list every project in the root
+prep new <name>       start a new project deliberately
+prep check            verify the folder against its MAP
+prep archive <name>   move a finished project into archive/
+```
+
+The commands are plain text and belong to no platform. The very first
+contact is different: before an AI has read the standard it knows no
+commands, so a person bootstraps with ordinary language — *"read my PREP
+folder"* — and the AI learns the rest from the folder itself.
+
 ### 9.1 Open
 
 To open a project: read `PREP.md`, then the latest `memory/` file, then
@@ -230,10 +255,22 @@ root folder's contents).
 
 ### 9.2 Save
 
+Saving is the user's call — `prep save`. An implementation **MUST NOT
+offer to save** during a conversation: people talk freely, and a tool
+that keeps asking "shall I save this?" is a tool people stop using. The
+one exception: when a conversation has grown long enough to risk losing
+context, it MAY offer once.
+
+Saving MUST NOT interrogate. The implementation writes the summary
+itself, from the conversation; it MUST NOT ask the user to write it. The
+only question allowed is the project **name**, and only when a project is
+first created (9.3).
+
 To save: write a new `memory/` session file; append one entry to
 `LOG.md`; update only the `STATUS` section of `PREP.md`; promote durable
 facts (9.4); update the project's line in the root MAP. Then **verify
-every write and report where things were saved, in plain words.**
+every write and report where things were saved, in plain words** — in a
+line or two, and get out of the way.
 
 An implementation MUST NOT report a save as done without verifying it. If
 a write fails or the tool has no file access, it MUST output the file
@@ -288,7 +325,7 @@ so plainly.
 
 ## 11. Out of scope (by design)
 
-The following are deliberately excluded from v0.2 to keep the standard
+The following are deliberately excluded from v0.3 to keep the standard
 understandable in five minutes. They are recorded here so their absence
 reads as a choice, not an oversight.
 
@@ -309,12 +346,20 @@ reads as a choice, not an oversight.
 
 ## 12. Versioning
 
-This is PREP v0.2. The version appears in every project's identification
+This is PREP v0.3. The version appears in every project's identification
 line. Changes are recorded in the changelog below. Backwards-incompatible
 changes MUST increment the version.
 
 ## Changelog
 
+- **v0.3 — 2026-07-14.** Default root folder renamed to `PREP/` (avoids
+  colliding with the `Projects` folder many people already have, and is
+  recognisable at a glance); the root may still carry any name and is
+  identified by its PREP.md. Added the `prep` command set (`save`,
+  `open`, `list`, `new`, `check`, `archive`). Saving is now strictly
+  user-initiated: implementations must not offer to save during a
+  conversation, and must write the summary themselves rather than ask
+  for one.
 - **v0.2 — 2026-07-14.** Established the standard's own home at
   https://prep.md (canonical URL in every identification line). Added
   `TOOLS.md` as an optional component — a catalogue of tools, APIs and
