@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="wrap home-centered">
+    <div className="wrap">
       <section className="hero">
         <p className="eyebrow">{home.hero.eyebrow}</p>
         <h1>{home.hero.headline}</h1>

@@ -703,103 +703,7 @@ section {
 .spec-doc table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: 0.92rem; }
 .spec-doc th, .spec-doc td { border: 1px solid var(--rule); padding: 8px 10px; text-align: left; }
 
-/* =====================================================================
-   HOME ONLY — centred layout + stacked illustrations.
-   Scoped to .home-centered so /spec and /about keep their own layout.
-   Header and footer live outside .wrap and are untouched.
-   ===================================================================== */
-
-.home-centered { text-align: center; }
-
-/* Blocks with a max-width need auto margins to actually sit centred */
-.home-centered .hero p,
-.home-centered .prose,
-.home-centered .section-intro,
-.home-centered .note,
-.home-centered .prompt-intro,
-.home-centered .plain-list,
-.home-centered .hero h1 {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Boxes all share the same width as the text column, edge to edge */
-.home-centered .code-block,
-.home-centered .usecase-grid,
-.home-centered .slides-stack {
-  width: 100%;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Code and commands stay left-aligned inside their centred boxes */
-.home-centered .code-block,
-.home-centered .command-line {
-  text-align: left;
-}
-
-/* Buttons, share row and copy control centred */
-.home-centered .cta-row,
-.home-centered .share {
-  justify-content: center;
-}
-.home-centered .copy-prompt {
-  align-items: center;
-}
-.home-centered .copy-button {
-  align-self: center;
-}
-.home-centered .copy-fallback {
-  width: 100%;
-  text-align: left;
-}
-
-/* Value list: centred, no dash markers (they read badly when centred) */
-.home-centered .plain-list {
-  display: grid;
-  gap: 10px;
-}
-.home-centered .plain-list li {
-  padding-left: 0;
-  text-align: center;
-}
-.home-centered .plain-list li::before {
-  content: "";
-  display: none;
-}
-
-/* Numbered walkthrough: number on top, everything centred */
-.home-centered .big-step {
-  grid-template-columns: 1fr;
-  justify-items: center;
-  text-align: center;
-  gap: 6px;
-}
-.home-centered .big-step-num {
-  width: auto;
-  margin-bottom: 4px;
-}
-.home-centered .big-step-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.home-centered .big-step-body p {
-  margin-left: auto;
-  margin-right: auto;
-}
-.home-centered .command-line {
-  width: 100%;
-}
-
-/* Use-case boxes: equal columns, centred content */
-.home-centered .usecase {
-  text-align: center;
-}
-
-/* Stacked illustrations, full text-column width */
+/* ===== Stacked illustrations — full text-column width, one below the other ===== */
 .slides-stack {
   display: flex;
   flex-direction: column;
@@ -818,4 +722,19 @@ section {
   display: block;
   border-radius: 8px;
   border: 1px solid var(--rule);
+}
+.slides-stack figcaption {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--detail);
+}
+
+/* The command box hugs its phrase instead of spanning the column */
+.command-line {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
 }

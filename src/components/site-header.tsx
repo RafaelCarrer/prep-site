@@ -5,7 +5,7 @@ export function SiteHeader() {
     <header className="masthead">
       <div className="masthead-inner">
         <Link href="/" className="wordmark" aria-label="PREP — home">
-          prep<span className="wordmark-dim">.md</span>
+          PREP<span className="wordmark-dim">.md</span>
         </Link>
         <nav aria-label="Primary">
           <ul className="nav-list">
