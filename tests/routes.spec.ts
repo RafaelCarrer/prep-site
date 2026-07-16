@@ -43,7 +43,8 @@ test("prompt integrity: embedded prompt matches canonical", () => {
 
 // --- Built static output ---
 const pages = [
-  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "prep-starter.zip", "prep save"] },
+  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "/download", "prep save"] },
+  { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
 ];
@@ -74,6 +75,15 @@ test("no forbidden routes and no Digita on the PREP site", () => {
   for (const f of ["index.html", "about/index.html", "spec/index.html"]) {
     const html = readFileSync(join(out, f), "utf8").toLowerCase();
     assert.ok(!html.includes("digita"), `Digita mentioned in ${f}`);
+  }
+});
+
+test("robots.txt and sitemap.xml built", () => {
+  const robots = readFileSync(join(out, "robots.txt"), "utf8");
+  assert.ok(robots.includes("Sitemap: https://prep.md/sitemap.xml"));
+  const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
+  for (const u of ["https://prep.md/", "https://prep.md/spec/", "https://prep.md/about/"]) {
+    assert.ok(sitemap.includes(`<loc>${u}</loc>`), `sitemap missing ${u}`);
   }
 });
 

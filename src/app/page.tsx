@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CopyPromptButton } from "@/components/copy-prompt-button";
 import { Slider } from "@/components/slider";
 import { ShareButtons } from "@/components/share-buttons";
-import { home, READ_COMMAND, STARTER_ZIP } from "@/content/prep-copy";
+import { home, READ_COMMAND } from "@/content/prep-copy";
 import { seo } from "@/content/seo";
 import { PREP_PROMPT } from "@/content/prep-prompt";
 
@@ -41,9 +41,9 @@ export default function HomePage() {
                 <h3>{step.heading}</h3>
                 <p>{step.body}</p>
                 {step.n === "1" ? (
-                  <a className="cta" href={STARTER_ZIP} download>
+                  <Link className="cta" href="/download">
                     Download the starter folder
-                  </a>
+                  </Link>
                 ) : null}
                 {step.n === "3" ? (
                   <div className="command-line">
