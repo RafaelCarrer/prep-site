@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DownloadKick } from "@/components/download-kick";
-import { STARTER_ZIP } from "@/content/prep-copy";
+import { home, READ_COMMAND, STARTER_ZIP } from "@/content/prep-copy";
 
 export const metadata: Metadata = {
   title: "Download the PREP starter folder",
@@ -22,11 +22,38 @@ export default function DownloadPage() {
           </a>
           .
         </p>
-        <p>
-          Next: move the <code>PREP</code> folder into your cloud drive, open
-          your AI, and say <strong>Read my PREP folder</strong>.
+      </section>
+
+      <section aria-labelledby="next-steps-heading" className="steps-block">
+        <h2 id="next-steps-heading" className="section-heading">
+          While it downloads — the two steps left
+        </h2>
+        <ol className="big-steps">
+          {home.steps
+            .filter((step) => step.n !== "1")
+            .map((step) => (
+              <li className="big-step" key={step.n}>
+                <span className="big-step-num" aria-hidden="true">
+                  {step.n}
+                </span>
+                <div className="big-step-body">
+                  <h3>{step.heading}</h3>
+                  <p>{step.body}</p>
+                  {step.n === "3" ? (
+                    <div className="command-line">
+                      <code>{READ_COMMAND}</code>
+                    </div>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+        </ol>
+        <p className="prose">
+          That&apos;s the whole setup. From then on, talk normally — and when
+          a conversation is worth keeping, type <code>prep save</code>.
         </p>
       </section>
+
       <DownloadKick href={STARTER_ZIP} />
     </div>
   );
