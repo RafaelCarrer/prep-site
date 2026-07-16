@@ -738,3 +738,16 @@ section {
   width: auto;
   max-width: 100%;
 }
+
+/* ===== Learn index — list of guides and articles ===== */
+.learn-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.learn-item { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.learn-item:first-child { padding-top: 4px; }
+.learn-link {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.learn-link:hover { color: var(--detail); text-decoration: underline; }
+.learn-desc { color: var(--muted); max-width: 68ch; margin: 6px 0 0; }

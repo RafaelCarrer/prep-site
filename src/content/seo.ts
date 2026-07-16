@@ -5,7 +5,7 @@ export interface RouteSeo {
   description: string;
 }
 
-export const seo: Record<"home" | "spec" | "about", RouteSeo> = {
+export const seo: Record<"home" | "spec" | "about" | "learn", RouteSeo> = {
   home: {
     path: "/",
     canonical: "https://prep.md",
@@ -16,9 +16,16 @@ export const seo: Record<"home" | "spec" | "about", RouteSeo> = {
   spec: {
     path: "/spec",
     canonical: "https://prep.md/spec",
-    title: "PREP Specification v0.2",
+    title: "PREP Specification v0.3",
     description:
       "The full PREP specification: a folder with PREP.md, LOG.md and memory/ that any AI can open and continue. Required core, behaviour, security, and scope.",
+  },
+  learn: {
+    path: "/learn",
+    canonical: "https://prep.md/learn",
+    title: "Learn PREP — Guides, FAQ, and Articles",
+    description:
+      "Guides and answers for using PREP with any AI: troubleshooting connectors, PREP vs AGENTS.md, keeping project memory across ChatGPT, Claude and Gemini.",
   },
   about: {
     path: "/about",

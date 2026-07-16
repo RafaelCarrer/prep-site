@@ -47,6 +47,9 @@ const pages = [
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
+  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md"] },
+  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply"] },
+  { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI"] },
 ];
 
 for (const p of pages) {
@@ -82,7 +85,14 @@ test("robots.txt and sitemap.xml built", () => {
   const robots = readFileSync(join(out, "robots.txt"), "utf8");
   assert.ok(robots.includes("Sitemap: https://prep.md/sitemap.xml"));
   const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
-  for (const u of ["https://prep.md/", "https://prep.md/spec/", "https://prep.md/about/"]) {
+  for (const u of [
+    "https://prep.md/",
+    "https://prep.md/spec/",
+    "https://prep.md/about/",
+    "https://prep.md/learn/",
+    "https://prep.md/learn/troubleshooting/",
+    "https://prep.md/learn/prep-vs-agents-md/",
+  ]) {
     assert.ok(sitemap.includes(`<loc>${u}</loc>`), `sitemap missing ${u}`);
   }
 });

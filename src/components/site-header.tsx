@@ -16,6 +16,9 @@ export function SiteHeader() {
               <Link href="/spec">Spec</Link>
             </li>
             <li>
+              <Link href="/learn">Learn</Link>
+            </li>
+            <li>
               <Link href="/about">About</Link>
             </li>
             <li>
