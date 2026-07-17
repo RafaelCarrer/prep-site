@@ -63,6 +63,10 @@ img {
 }
 
 /* ---- Base ---- */
+html {
+  /* Keep anchor jumps clear of the sticky masthead. */
+  scroll-padding-top: 76px;
+}
 body {
   background: var(--ground);
   color: var(--ink);
@@ -109,6 +113,10 @@ a {
 /* ---- Masthead ---- */
 .masthead {
   border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--ground);
 }
 .masthead-inner {
   max-width: 720px;
