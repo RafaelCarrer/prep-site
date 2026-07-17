@@ -47,9 +47,9 @@ const pages = [
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
-  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md"] },
-  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply"] },
-  { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI"] },
+  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md", "Published", "Updated"] },
+  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply", "save changes to it", "Updated:", "Copy link"] },
+  { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI", "Published:", "Copy link", "WhatsApp"] },
 ];
 
 for (const p of pages) {

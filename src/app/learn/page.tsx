@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { guides, articles } from "@/content/learn";
+import { guides, articles, formatDate } from "@/content/learn";
 import { seo } from "@/content/seo";
 
 export const metadata: Metadata = {
@@ -39,6 +39,10 @@ export default function LearnPage() {
                 <Link href={`/learn/${e.slug}`} className="learn-link">
                   {e.title}
                 </Link>
+                <p className="learn-date">
+                  {e.kind === "guide" ? "Updated" : "Published"}:{" "}
+                  {formatDate(e.date)}
+                </p>
                 <p className="learn-desc">{e.description}</p>
               </li>
             ))}
@@ -59,6 +63,10 @@ export default function LearnPage() {
                 <Link href={`/learn/${e.slug}`} className="learn-link">
                   {e.title}
                 </Link>
+                <p className="learn-date">
+                  {e.kind === "guide" ? "Updated" : "Published"}:{" "}
+                  {formatDate(e.date)}
+                </p>
                 <p className="learn-desc">{e.description}</p>
               </li>
             ))}

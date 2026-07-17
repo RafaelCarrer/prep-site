@@ -759,3 +759,23 @@ section {
 }
 .learn-link:hover { color: var(--detail); text-decoration: underline; }
 .learn-desc { color: var(--muted); max-width: 68ch; margin: 6px 0 0; }
+
+/* Learn: publication date + copy-link share button */
+.learn-date {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--detail);
+  margin: 0 0 14px;
+}
+.share-copy {
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--accent);
+}

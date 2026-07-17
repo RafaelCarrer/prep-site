@@ -72,6 +72,21 @@ folder tidy — but nothing breaks if you don't; the AI reads the latest.
 
 ---
 
+## "My AI reads my folder but can't save changes to it."
+
+Some file connectors are read-only. They can open your PREP folder and
+read every file, but they can't write a snapshot or update the log. Today
+ChatGPT's Google Drive connector is one of these; Claude's can write.
+
+**Fix:** when the AI can't save, have it hand you the snapshot as text and
+save the file yourself. Ask it to *"write the session snapshot as
+markdown"*, then create a file in your `memory/` folder named like
+`2026-07-17-topic.md` and paste it in. It's one extra step, and it keeps
+the promise intact: the memory ends up in the folder, not trapped in the
+AI. On a platform that can write, the same `prep save` does it for you.
+
+---
+
 ## "The AI said it couldn't read a file instead of just answering."
 
 That is the standard working as intended. A PREP-aware AI must not invent or

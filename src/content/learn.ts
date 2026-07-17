@@ -39,6 +39,17 @@ export function learnBySlug(slug: string): LearnEntry | undefined {
   return learn.find((e) => e.slug === slug);
 }
 
+// "2026-07-17" -> "17 July 2026". Parsed as UTC to avoid TZ drift.
+export function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 export function guides(): LearnEntry[] {
   return learn.filter((e) => e.kind === "guide");
 }

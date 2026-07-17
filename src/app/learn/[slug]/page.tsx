@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { learn, learnBySlug, learnHtml } from "@/content/learn";
+import { ShareButtons } from "@/components/share-buttons";
+import {
+  learn,
+  learnBySlug,
+  learnHtml,
+  formatDate,
+} from "@/content/learn";
 
 export function generateStaticParams() {
   return learn.map((e) => ({ slug: e.slug }));
@@ -38,6 +44,11 @@ export default async function LearnEntryPage({
   const entry = learnBySlug(slug);
   if (!entry) notFound();
   const html = learnHtml(entry.slug);
+  const dateLabel =
+    entry.kind === "guide"
+      ? `Updated: ${formatDate(entry.date)}`
+      : `Published: ${formatDate(entry.date)}`;
+  const url = `https://prep.md/learn/${entry.slug}`;
   return (
     <div className="wrap">
       <p className="eyebrow">
@@ -45,10 +56,12 @@ export default async function LearnEntryPage({
           ← Learn
         </Link>
       </p>
+      <p className="learn-date">{dateLabel}</p>
       <article
         className="spec-doc"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <ShareButtons url={url} title={entry.title} text={`${entry.title} — PREP`} />
     </div>
   );
 }
