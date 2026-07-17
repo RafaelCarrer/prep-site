@@ -40,6 +40,24 @@ Next action: Talk to your AI about anything; type "prep save" when it's worth ke
 - Follow prep-prompt.md. To open a project, read that project's own PREP.md,
   not this one.
 - Never offer to save. The user saves with "prep save" when they want to.
+
+## HOW TO SAVE (exact procedure — do not improvise)
+When the user types "prep save", follow these steps. Do not look for a
+tool called "prep save" — there is none. Saving means creating files.
+1. You only need to be able to CREATE files. If you can create a file,
+   you can save.
+2. Write the snapshot yourself: the decisions, the current state, and the
+   next step. Less than one page.
+3. Create ONE file, memory/YYYY-MM-DD-<topic>.md, inside the memory/
+   folder of the project that is open. (In this starter that is this
+   folder's own memory/.) Markdown preferred; a plain text file is fine.
+4. Create a new LOG.md with a dated line for the session (same name; the
+   newest file wins).
+5. RE-READ what you created. Only then say "Saved" and list the files.
+6. If creating a file is truly impossible, hand the user the snapshot as
+   text and tell them the exact filename and where to paste it.
+Never say "Saved" without verifying. Never say "I can't save" if you can
+create a file.
 `;
 
 const rootLog = `# Log — PREP root

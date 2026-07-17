@@ -61,7 +61,12 @@ export default async function LearnEntryPage({
         className="spec-doc"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <ShareButtons url={url} title={entry.title} text={`${entry.title} — PREP`} />
+      <ShareButtons
+        url={url}
+        title={entry.title}
+        text={`${entry.title} — PREP`}
+        copyText={`${entry.title} — ${url}`}
+      />
     </div>
   );
 }

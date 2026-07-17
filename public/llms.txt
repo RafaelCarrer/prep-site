@@ -1,0 +1,15 @@
+# PREP
+
+> PREP is an open standard for AI-readable project folders. The memory
+> belongs to the project, not the AI: keep a project's context in a
+> folder (PREP.md, LOG.md, memory/) and any AI — ChatGPT, Claude,
+> Gemini — can open it and continue exactly where you left off.
+
+## Docs
+- [Specification](https://prep.md/spec): the full PREP standard (v0.3) — required files, behaviour, security, scope.
+- [Learn](https://prep.md/learn): guides and articles on using PREP with any AI.
+- [Troubleshooting & FAQ](https://prep.md/learn/troubleshooting): real issues connecting an AI to a PREP folder, and the fix for each.
+- [Download](https://prep.md/download): a ready-to-use starter folder.
+
+## Source
+- [GitHub](https://github.com/RafaelCarrer/prep.md): the standard, MIT-licensed.

@@ -47,9 +47,10 @@ const pages = [
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
-  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md", "Published", "Updated"] },
-  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply", "save changes to it", "Updated:", "Copy link"] },
+  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Published", "Updated"] },
+  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply", "save changes to it", "Updated:", "Copy link", "Last checked", "Which AIs can read and write"] },
   { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI", "Published:", "Copy link", "WhatsApp"] },
+  { file: "learn/switch-chatgpt-to-claude/index.html", must: ["Read my PREP folder", "memory/", "Published:", "Copy link"] },
 ];
 
 for (const p of pages) {
@@ -95,6 +96,12 @@ test("robots.txt and sitemap.xml built", () => {
   ]) {
     assert.ok(sitemap.includes(`<loc>${u}</loc>`), `sitemap missing ${u}`);
   }
+});
+
+test("llms.txt built for AI crawlers", () => {
+  const llms = readFileSync(join(out, "llms.txt"), "utf8");
+  assert.ok(llms.includes("# PREP"), "llms.txt missing PREP heading");
+  assert.ok(llms.includes("https://prep.md/spec"), "llms.txt missing spec link");
 });
 
 test("starter zip built, well-formed, prompt exact", () => {

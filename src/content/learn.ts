@@ -26,6 +26,14 @@ export const learn: LearnEntry[] = [
     kind: "guide",
   },
   {
+    slug: "switch-chatgpt-to-claude",
+    title: "How to switch from ChatGPT to Claude without losing context",
+    description:
+      "Switch AI models without re-explaining your project. Keep the context in a PREP folder and any AI picks up exactly where you left off.",
+    date: "2026-07-18",
+    kind: "article",
+  },
+  {
     slug: "prep-vs-agents-md",
     title: "PREP vs AGENTS.md — when to use each",
     description:

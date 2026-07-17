@@ -11,6 +11,28 @@ a human can read.
 
 ---
 
+## Which AIs can read and write PREP folders today?
+
+*Last checked: 18 July 2026.* Reading a PREP folder works widely. Saving
+(writing a snapshot back) depends on whether the AI's file connector can
+create files. Here is what we have tested ourselves.
+
+| AI + connector | Read the folder | Save (`prep save`) |
+| --- | --- | --- |
+| Claude + Google Drive | Yes | Yes — writes snapshots directly |
+| ChatGPT + Google Drive | Yes | Yes, by creating files — see note |
+
+**Note on ChatGPT:** it can create files, so `prep save` works by creating
+a new snapshot file rather than editing one in place. That is exactly what
+the standard's create-only rule expects. If your connector cannot reach a
+subfolder to save there, use the text fallback below — have the AI hand you
+the snapshot as text and save the file yourself.
+
+Platforms change fast, and this table changes with them. Tested another AI?
+Tell us at [hello@prep.md](mailto:hello@prep.md) and we will add it.
+
+---
+
 ## "My AI says it can't access Google Drive this turn — but Drive is connected."
 
 Being connected in **settings** is not the same as being active in **this

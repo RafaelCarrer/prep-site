@@ -4,12 +4,14 @@ import { useState } from "react";
 
 // Copy-to-clipboard share button. This is how people share to Instagram,
 // which offers no share-by-URL, and it also works for DMs, Telegram, etc.
-export function CopyLinkButton({ url }: { url: string }) {
+// Copies a ready-to-paste line (title/description + URL), falling back to
+// the bare url if no text is given.
+export function CopyLinkButton({ url, text }: { url: string; text?: string }) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(text ?? url);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {

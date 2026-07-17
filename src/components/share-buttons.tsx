@@ -5,6 +5,8 @@ const DEFAULT_TEXT =
   "PREP — the memory belongs to the project, not the AI. Any AI opens the folder and continues where you left off.";
 const DEFAULT_TITLE =
   "PREP — an open standard for AI-readable project folders";
+const DEFAULT_COPY =
+  "PREP — the memory belongs to the project, not the AI. https://prep.md";
 
 const enc = encodeURIComponent;
 
@@ -12,10 +14,12 @@ export function ShareButtons({
   url = DEFAULT_URL,
   text = DEFAULT_TEXT,
   title = DEFAULT_TITLE,
+  copyText = DEFAULT_COPY,
 }: {
   url?: string;
   text?: string;
   title?: string;
+  copyText?: string;
 }) {
   const links = [
     { label: "X", href: `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}` },
@@ -31,7 +35,7 @@ export function ShareButtons({
           {l.label}
         </a>
       ))}
-      <CopyLinkButton url={url} />
+      <CopyLinkButton url={url} text={copyText} />
     </div>
   );
 }
