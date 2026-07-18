@@ -43,8 +43,8 @@ test("prompt integrity: embedded prompt matches canonical", () => {
 
 // --- Built static output ---
 const pages = [
-  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "/download", "prep save"] },
-  { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder"] },
+  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "/download", "prep save", "Works with any AI that can read", "slides/slide-1.jpg"] },
+  { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder", "inside", "inspect the contents on GitHub"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
   { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Why AI forgets your project", "Published", "Updated"] },
@@ -103,6 +103,12 @@ test("llms.txt built for AI crawlers", () => {
   const llms = readFileSync(join(out, "llms.txt"), "utf8");
   assert.ok(llms.includes("# PREP"), "llms.txt missing PREP heading");
   assert.ok(llms.includes("https://prep.md/spec"), "llms.txt missing spec link");
+});
+
+test("raw spec markdown served at /spec.md", () => {
+  const raw = readFileSync(join(out, "spec.md"), "utf8");
+  assert.ok(raw.includes("PREP"), "spec.md missing content");
+  assert.ok(raw.includes("v0.3"), "spec.md not the v0.3 spec");
 });
 
 test("starter zip built, well-formed, prompt exact", () => {

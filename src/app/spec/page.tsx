@@ -31,6 +31,12 @@ export default function SpecPage() {
         className="spec-doc"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <p className="prose">
+        <a href="/spec.md" className="text-link">
+          Read the raw markdown version
+        </a>
+        .
+      </p>
     </div>
   );
 }

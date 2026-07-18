@@ -2,7 +2,7 @@
 // with the exact canonical PREP prompt embedded as prep-prompt.md so the
 // folder is self-installing — any AI that reads it learns how to run PREP.
 import AdmZip from "adm-zip";
-import { readFileSync, mkdirSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -107,3 +107,9 @@ const outDir = join(root, "public");
 mkdirSync(outDir, { recursive: true });
 zip.writeZip(join(outDir, "prep-starter.zip"));
 console.log("make-starter: wrote public/prep-starter.zip");
+
+// Raw markdown of the spec at a stable URL (/spec.md) — AI crawlers and
+// developers prefer plain markdown to the rendered page.
+const specSrc = readFileSync(join(root, "src", "content", "spec.md"), "utf8");
+writeFileSync(join(outDir, "spec.md"), specSrc);
+console.log("make-starter: wrote public/spec.md");

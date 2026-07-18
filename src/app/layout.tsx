@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     url: "https://prep.md",
     siteName: "PREP",
     type: "website",
-    images: [{ url: "/slides/slide-1.png", width: 1920, height: 1080 }],
+    images: [{ url: "/slides/slide-1.jpg", width: 1200, height: 675 }],
   },
   twitter: {
     card: "summary_large_image",
     title: seo.home.title,
     description: seo.home.description,
-    images: ["/slides/slide-1.png"],
+    images: ["/slides/slide-1.jpg"],
   },
   icons: {
     icon: [

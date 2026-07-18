@@ -31,6 +31,11 @@ export const home = {
     headline: "The memory belongs to the project, not the AI.",
     body: "Your projects, readable by any AI or agent — context in seconds. Set up in one minute:",
   },
+  compatNote: {
+    text: "Works with any AI that can read your project folder. Saving depends on the platform's file connector —",
+    linkLabel: "see which AIs can read and write today.",
+    href: "/learn/troubleshooting",
+  },
   steps: [
     {
       n: "1",

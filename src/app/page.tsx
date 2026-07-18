@@ -54,6 +54,12 @@ export default function HomePage() {
             </li>
           ))}
         </ol>
+        <p className="compat-note">
+          {home.compatNote.text}{" "}
+          <Link href={home.compatNote.href} className="text-link">
+            {home.compatNote.linkLabel}
+          </Link>
+        </p>
       </section>
 
       <hr className="section-rule" />

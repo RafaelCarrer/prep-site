@@ -7,6 +7,7 @@
 
 ## Docs
 - [Specification](https://prep.md/spec): the full PREP standard (v0.3) — required files, behaviour, security, scope.
+- [Specification (raw markdown)](https://prep.md/spec.md): the same spec as plain markdown.
 - [Learn](https://prep.md/learn): guides and articles on using PREP with any AI.
 - [Troubleshooting & FAQ](https://prep.md/learn/troubleshooting): real issues connecting an AI to a PREP folder, and the fix for each.
 - [Download](https://prep.md/download): a ready-to-use starter folder.

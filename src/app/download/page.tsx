@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DownloadKick } from "@/components/download-kick";
-import { home, READ_COMMAND, STARTER_ZIP } from "@/content/prep-copy";
+import { home, READ_COMMAND, STARTER_ZIP, GITHUB_REPO } from "@/content/prep-copy";
 
 export const metadata: Metadata = {
   title: "Download the PREP starter folder",
@@ -19,6 +19,44 @@ export default function DownloadPage() {
           If it doesn&apos;t begin automatically,{" "}
           <a href={STARTER_ZIP} download>
             download prep-starter.zip
+          </a>
+          .
+        </p>
+      </section>
+
+      <section aria-labelledby="inside-heading">
+        <h2 id="inside-heading" className="section-heading">
+          What&apos;s inside
+        </h2>
+        <p className="prose">
+          A small zip — about 6&nbsp;KB, updated July&nbsp;2026 — containing a
+          ready-to-use <code>PREP</code> folder:
+        </p>
+        <ul className="plain-list">
+          <li>
+            <code>PREP.md</code> — the entry point, with the exact save
+            procedure written inside.
+          </li>
+          <li>
+            <code>LOG.md</code> — an append-only history, ready for its first
+            line.
+          </li>
+          <li>
+            <code>prep-prompt.md</code> — the operating instructions any AI
+            reads to learn the standard.
+          </li>
+          <li>
+            <code>README.txt</code> — plain-English setup, no jargon.
+          </li>
+          <li>
+            <code>memory/</code> — an empty folder for your session snapshots.
+          </li>
+        </ul>
+        <p className="prose">
+          Nothing runs; nothing phones home. It&apos;s plain text you can read
+          first —{" "}
+          <a href={GITHUB_REPO} rel="noopener noreferrer" className="text-link">
+            inspect the contents on GitHub
           </a>
           .
         </p>
