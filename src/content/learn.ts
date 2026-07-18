@@ -26,6 +26,14 @@ export const learn: LearnEntry[] = [
     kind: "guide",
   },
   {
+    slug: "why-ai-forgets-your-project",
+    title: "Why AI forgets your project (and how to fix it)",
+    description:
+      "AI forgets your project because chat context is temporary. A simple project folder gives every assistant the same durable memory.",
+    date: "2026-07-19",
+    kind: "article",
+  },
+  {
     slug: "switch-chatgpt-to-claude",
     title: "How to switch from ChatGPT to Claude without losing context",
     description:
