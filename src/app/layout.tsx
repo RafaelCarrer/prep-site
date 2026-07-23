@@ -29,11 +29,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url:
-          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231E5C43'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' font-weight='600' fill='%23F7F6F1' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E",
-      },
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
     ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
