@@ -43,7 +43,7 @@ test("prompt integrity: embedded prompt matches canonical", () => {
 
 // --- Built static output ---
 const pages = [
-  { file: "index.html", must: ["Continue your projects in any AI.", "Save your first project", "save.prep.md", "Your files stay in your Google Drive", "How it works", "open standard", "slides/slide-1.jpg"] },
+  { file: "index.html", must: ["Continue your projects in any AI.", "Save your first project", "save.prep.md", "Your files stay in your Google Drive", "How it works", "open standard", "og-prep.png"] },
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder", "inside", "inspect the contents on GitHub"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
