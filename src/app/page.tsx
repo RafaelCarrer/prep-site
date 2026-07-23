@@ -5,7 +5,10 @@ import { appHome, APP_URL, GITHUB_REPO } from "@/content/prep-copy";
 import { seo } from "@/content/seo";
 
 export const metadata: Metadata = {
-  title: seo.home.title,
+  // Browser tab shows the clean brand "PREP.md" (matches the masthead
+  // wordmark). The descriptive title is kept for search results and social
+  // shares via openGraph/twitter below.
+  title: "PREP.md",
   description: seo.home.description,
   alternates: { canonical: seo.home.canonical },
   openGraph: {
