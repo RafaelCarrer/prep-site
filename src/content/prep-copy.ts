@@ -12,7 +12,7 @@ export const APP_URL = "https://save.prep.md";
 // a project back up. Saving is done by PREP Save (the app); opening needs no
 // tool, only this plain sentence. Keep it in sync with spec.md §9.0.
 export const OPEN_INSTRUCTION =
-  "In your Google Drive, open the «project» folder inside PREP and read PREP.md.";
+  "In my Google Drive, open the «project» folder inside PREP and read PREP.md.";
 
 // The app-first home: a short explainer that warms a cold visitor before
 // the high-trust "sign in with Google" ask, then sends them to the app.

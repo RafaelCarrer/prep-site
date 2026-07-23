@@ -239,7 +239,7 @@ but many cannot write reliably, so a dedicated tool is the dependable path.
 read access to the folder can follow. The canonical open instruction is:
 
 ```
-In your Google Drive, open the «project» folder inside PREP
+In my Google Drive, open the «project» folder inside PREP
 and read PREP.md.
 ```
 
