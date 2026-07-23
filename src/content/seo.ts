@@ -9,9 +9,9 @@ export const seo: Record<"home" | "spec" | "about" | "learn", RouteSeo> = {
   home: {
     path: "/",
     canonical: "https://prep.md",
-    title: "PREP — An Open Standard for AI-Readable Project Folders",
+    title: "PREP — Continue Your Projects in Any AI",
     description:
-      "The memory belongs to the project, not the AI. Prep a folder once and any AI — ChatGPT, Claude, Gemini — picks up exactly where you left off. Set up in one minute.",
+      "Save a conversation once into your own Google Drive, and any AI — ChatGPT, Claude, Gemini — picks it up exactly where you left off. Free, open, no lock-in.",
   },
   spec: {
     path: "/spec",

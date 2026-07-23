@@ -6,6 +6,45 @@ export const AMETI = "https://ameti.app";
 export const EMAIL = "hello@prep.md";
 export const STARTER_ZIP = "/prep-starter.zip";
 export const READ_COMMAND = "Read my PREP folder";
+export const APP_URL = "https://save.prep.md";
+
+// The app-first home: a short explainer that warms a cold visitor before
+// the high-trust "sign in with Google" ask, then sends them to the app.
+export const appHome = {
+  hero: {
+    eyebrow: "PREP Save",
+    headline: "Continue your projects in any AI.",
+    body: "Save a conversation once — into your own Google Drive — and any AI picks it up exactly where you left off. ChatGPT, Claude, Gemini.",
+    cta: "Save your first project",
+  },
+  stepsHeading: "How it works",
+  steps: [
+    {
+      n: "1",
+      heading: "Talk to any AI",
+      body: "Work on your project in ChatGPT, Claude, or Gemini — exactly as you already do.",
+    },
+    {
+      n: "2",
+      heading: "Save it to your Drive",
+      body: "Paste the conversation's summary into PREP Save. It writes a clean, verified snapshot into a project folder in your own Google Drive.",
+    },
+    {
+      n: "3",
+      heading: "Open it in any AI",
+      body: "Next time, just tell any AI to open your project folder. It reads the memory and continues — no re-explaining.",
+    },
+  ],
+  safetyHeading: "Your memory, your Drive",
+  safety: [
+    "Your files stay in your Google Drive. We never store your content.",
+    "Plain markdown you can read, edit, and back up yourself.",
+    "Built on an open standard — no lock-in, no account with us.",
+  ],
+  standardHeading: "An open standard underneath",
+  standardBody:
+    "PREP Save is the easy way to use PREP — an open standard for AI-readable project folders. Prefer to set it up by hand, or build your own tool on it? The spec is short and free.",
+};
 
 export const slides = [
   {

@@ -43,7 +43,7 @@ test("prompt integrity: embedded prompt matches canonical", () => {
 
 // --- Built static output ---
 const pages = [
-  { file: "index.html", must: ["The memory belongs to the project, not the AI.", "Download the starter folder", "Read my PREP folder", "/download", "prep save", "Works with any AI that can read", "slides/slide-1.jpg"] },
+  { file: "index.html", must: ["Continue your projects in any AI.", "Save your first project", "save.prep.md", "Your files stay in your Google Drive", "How it works", "open standard", "slides/slide-1.jpg"] },
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder", "inside", "inspect the contents on GitHub"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
@@ -68,7 +68,7 @@ for (const p of pages) {
 test("SEO title present", () => {
   assert.ok(
     readFileSync(join(out, "index.html"), "utf8").includes(
-      "PREP — An Open Standard for AI-Readable Project Folders"
+      "PREP — Continue Your Projects in Any AI"
     )
   );
 });
