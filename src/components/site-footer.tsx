@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -16,6 +18,8 @@ export function SiteFooter() {
             GitHub
           </a>
           <a href="mailto:hello@prep.md">hello@prep.md</a>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
           <a
             href="https://github.com/sponsors/RafaelCarrer"
             rel="noopener noreferrer"
