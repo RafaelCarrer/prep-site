@@ -20,7 +20,7 @@ export const appHome = {
   hero: {
     eyebrow: "PREP Save",
     headline: "Continue your projects in any AI.",
-    body: "Save a conversation once — into your own Google Drive — and any AI picks it up exactly where you left off. ChatGPT, Claude, Gemini.",
+    body: "Save a conversation once — as a structured project folder in your own Google Drive — and any AI picks it up exactly where you left off. ChatGPT, Claude, Gemini.",
     cta: "Save your first project",
   },
   stepsHeading: "How it works",
@@ -33,23 +33,23 @@ export const appHome = {
     {
       n: "2",
       heading: "Save it to your Drive",
-      body: "Paste the conversation's summary into PREP Save. It writes a clean, verified snapshot into a project folder in your own Google Drive.",
+      body: "Paste the conversation's summary into PREP Save. It organizes it into a clean, verified snapshot — a project folder laid out to a proven structure any AI can read.",
     },
     {
       n: "3",
       heading: "Open it in any AI",
-      body: "Next time, just tell any AI to open your project folder. It reads the memory and continues — no re-explaining.",
+      body: "Next time, just tell any AI to open your project folder. Its structure points the AI straight to what matters, and it continues — no re-explaining.",
     },
   ],
   safetyHeading: "Your memory, your Drive",
   safety: [
     "Your files stay in your Google Drive. We never store your content.",
-    "Plain markdown you can read, edit, and back up yourself.",
+    "Plain, well-organized markdown you can read, edit, and back up yourself.",
     "Built on an open standard — no lock-in, no account with us.",
   ],
-  standardHeading: "An open standard underneath",
+  standardHeading: "A method, not a guess",
   standardBody:
-    "PREP Save is the easy way to use PREP — an open standard for AI-readable project folders. Curious how it works, or want to build your own tool on it? The spec is short and free.",
+    "This isn't just dropping notes in a folder. PREP is an open standard — a deliberate structure for AI-readable project folders — so any AI knows exactly what to read and where. PREP Save is the easy way to use it; the spec is short and free if you want to look under the hood.",
 };
 
 export const slides = [
