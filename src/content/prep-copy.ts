@@ -49,7 +49,7 @@ export const appHome = {
   ],
   standardHeading: "An open standard underneath",
   standardBody:
-    "PREP Save is the easy way to use PREP — an open standard for AI-readable project folders. Prefer to set it up by hand, or build your own tool on it? The spec is short and free.",
+    "PREP Save is the easy way to use PREP — an open standard for AI-readable project folders. Curious how it works, or want to build your own tool on it? The spec is short and free.",
 };
 
 export const slides = [

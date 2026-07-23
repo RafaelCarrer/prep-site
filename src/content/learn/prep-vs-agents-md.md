@@ -75,5 +75,5 @@ portable. They were built for different jobs, and neither replaces the other.
 
 Want the full picture of how PREP works? Read the
 [specification](https://prep.md/spec), or
-[download the starter folder](https://prep.md/download) and try it in a
-minute.
+[save your first project with PREP Save](https://save.prep.md) and try it
+in a minute.

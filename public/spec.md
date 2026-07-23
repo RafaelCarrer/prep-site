@@ -247,21 +247,10 @@ The AI reads the standard from the folder itself and continues from
 Section 9.1. This natural-language line is the standard's one required
 piece of user-facing syntax; everything else the AI learns from `PREP.md`.
 
-An implementation MAY additionally accept a short command set as a
-convenience, and SHOULD accept plain phrasing for the same intent ("save
-this", "what do I have?"):
-
-```
-prep save             save this conversation into the current project
-prep open <name>      open a project and continue where it left off
-prep list             list every project in the root
-prep new <name>       start a new project deliberately
-prep check            verify the folder against its MAP
-prep archive <name>   move a finished project into archive/
-```
-
-These commands are optional sugar for prompt-based implementations; they
-belong to no platform and no implementation is required to support them.
+No special command language is required. An implementation SHOULD accept
+plain phrasing for the operations below ("save this", "what do I have?",
+"open my dog project") — the standard is driven in ordinary words, not a
+syntax the user has to memorise.
 
 ### 9.1 Open
 
@@ -385,9 +374,9 @@ changes MUST increment the version.
   conversation, and must write the summary themselves rather than ask
   for one. *Amended 2026-07-23:* Section 9 now leads with saving via a
   dedicated tool ([PREP Save](https://save.prep.md), the reference
-  implementation) and a single canonical open instruction; the `prep`
-  command set is optional convenience for prompt-based implementations.
-  The folder format is unchanged.
+  implementation) and a single canonical open instruction. The `prep`
+  command syntax was dropped in favour of plain phrasing; the standard is
+  driven in ordinary words. The folder format is unchanged.
 - **v0.2 — 2026-07-14.** Established the standard's own home at
   https://prep.md (canonical URL in every identification line). Added
   `TOOLS.md` as an optional component — a catalogue of tools, APIs and
