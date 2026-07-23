@@ -37,7 +37,7 @@ state, what comes next. Nothing is stored on our side.
 Now you open Claude and tell it where to look:
 
 > In my Google Drive, open the **Sunday Sourdough** folder inside PREP and
-> read PREP.md to continue.
+> read PREP.md.
 
 Claude reads `PREP.md`, skims the log, opens the latest snapshot. It now
 knows what you knew. You keep going from the exact sentence you stopped on.

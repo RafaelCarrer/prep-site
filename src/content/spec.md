@@ -240,7 +240,7 @@ read access to the folder can follow. The canonical open instruction is:
 
 ```
 In your Google Drive, open the «project» folder inside PREP
-and read PREP.md to continue.
+and read PREP.md.
 ```
 
 The AI reads the standard from the folder itself and continues from

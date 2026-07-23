@@ -114,7 +114,7 @@ status in `PREP.md`. Your files never leave your Drive.
 The next morning, you open another AI and tell it where to look:
 
 > In my Google Drive, open the **Rome** folder inside PREP and read
-> PREP.md to continue.
+> PREP.md.
 
 The new assistant reads the entry point, the relevant history and the latest
 snapshot. It sees the evening arrival, the hotel near Termini, the slow
