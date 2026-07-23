@@ -18,14 +18,6 @@ export interface LearnEntry {
 // Every entry needs a matching markdown file at src/content/learn/<slug>.md.
 export const learn: LearnEntry[] = [
   {
-    slug: "troubleshooting",
-    title: "Troubleshooting & FAQ",
-    description:
-      "Real issues people hit connecting an AI to a PREP folder — and the fix for each. Grows one question at a time.",
-    date: "2026-07-17",
-    kind: "guide",
-  },
-  {
     slug: "why-ai-forgets-your-project",
     title: "Why AI forgets your project (and how to fix it)",
     description:

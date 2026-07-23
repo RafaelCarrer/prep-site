@@ -28,13 +28,19 @@ stays disposable.
 
 Here is the move, start to finish.
 
-In ChatGPT, when you have done good work, you type `prep save`. The AI
-writes a snapshot into `memory/`: the decisions, the current state, what
-comes next.
+In ChatGPT, when you have done good work, you save it with
+[PREP Save](https://save.prep.md). You paste the conversation's summary,
+and PREP Save writes a clean snapshot straight into your project's
+`memory/` folder in your own Google Drive: the decisions, the current
+state, what comes next. Nothing is stored on our side.
 
-Now you open Claude. You say **Read my PREP folder**. Claude reads
-`PREP.md`, skims the log, opens the latest snapshot. It now knows what you
-knew. You keep going from the exact sentence you stopped on.
+Now you open Claude and tell it where to look:
+
+> In my Google Drive, open the **Sunday Sourdough** folder inside PREP and
+> read PREP.md to continue.
+
+Claude reads `PREP.md`, skims the log, opens the latest snapshot. It now
+knows what you knew. You keep going from the exact sentence you stopped on.
 
 No 40-minute re-explanation. No pasting a giant transcript. No forgotten
 decision.
@@ -67,15 +73,14 @@ belongs in memory. Your roadmap belongs in the folder.
 
 ## Try it once
 
-Download the starter folder, drop it in your drive, and move one real
-project into it. Work in ChatGPT today. Open Claude tomorrow and say
-**Read my PREP folder**.
+Take one real project. Work in ChatGPT today, and save it with
+[PREP Save](https://save.prep.md) when you stop. Open Claude tomorrow and
+tell it to open that folder in your Google Drive and read `PREP.md`.
 
 The first time a different AI picks up mid-thought, you stop worrying about
 which model to marry. You just use whichever one is best this week.
 
 Conversations come and go. Models come and go. Your project should not.
 
-Read the [spec](https://prep.md/spec), or
-[download the starter folder](https://prep.md/download) and switch
-something today.
+[Save your first project with PREP Save →](https://save.prep.md) — or read
+the [spec](https://prep.md/spec) to see how the folder works underneath.

@@ -8,6 +8,12 @@ export const STARTER_ZIP = "/prep-starter.zip";
 export const READ_COMMAND = "Read my PREP folder";
 export const APP_URL = "https://save.prep.md";
 
+// The canonical open instruction — the one line a user gives any AI to pick
+// a project back up. Saving is done by PREP Save (the app); opening needs no
+// tool, only this plain sentence. Keep it in sync with spec.md §9.0.
+export const OPEN_INSTRUCTION =
+  "In your Google Drive, open the «project» folder inside PREP and read PREP.md to continue.";
+
 // The app-first home: a short explainer that warms a cold visitor before
 // the high-trust "sign in with Google" ask, then sends them to the app.
 export const appHome = {
@@ -69,11 +75,6 @@ export const home = {
     eyebrow: "The open standard for AI-readable project folders",
     headline: "The memory belongs to the project, not the AI.",
     body: "Your projects, readable by any AI or agent — context in seconds. Set up in one minute:",
-  },
-  compatNote: {
-    text: "Works with any AI that can read your project folder. Saving depends on the platform's file connector —",
-    linkLabel: "see which AIs can read and write today.",
-    href: "/learn/troubleshooting",
   },
   steps: [
     {

@@ -88,7 +88,11 @@ export default function DownloadPage() {
         </ol>
         <p className="prose">
           That&apos;s the whole setup. From then on, talk normally — and when
-          a conversation is worth keeping, type <code>prep save</code>.
+          a conversation is worth keeping, save it with{" "}
+          <a href="https://save.prep.md" className="text-link">
+            PREP&nbsp;Save
+          </a>
+          , which writes the snapshot straight into this folder in your Drive.
         </p>
       </section>
 

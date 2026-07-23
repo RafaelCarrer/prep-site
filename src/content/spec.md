@@ -58,7 +58,7 @@ with repeat customers.
 Updated: 2026-07-14
 State: Recipe is stable; testing a longer cold ferment for flavour.
 Next action: Decide on final pricing before telling the WhatsApp list.
-Last session: memory/2026-07-14-session.md
+Latest: memory/2026-07-14-session.md
 
 ## MAP
 - LOG.md — dated history; read for how we got here.
@@ -223,10 +223,33 @@ updated (and the write verified). This keeps the catalogue true.
 An implementation of PREP (a prompt, a tool, an app) SHOULD follow these
 flows. This is what turns the file convention into a usable experience.
 
-### 9.0 Commands
+### 9.0 Saving and opening
 
-An implementation SHOULD accept this command set, and SHOULD also accept
-plain phrasing for the same intent ("save this", "what do I have?").
+The two flows a user needs are **save** (write the current conversation
+into the project) and **open** (pick the project back up in any AI).
+
+**Saving** is best handled by a tool that can write to the drive reliably.
+The reference implementation is **[PREP Save](https://save.prep.md)**: the
+user pastes a conversation's summary, and it writes a verified snapshot
+into the project folder in the user's own Google Drive, following Section
+9.2. A chat assistant with file-write access MAY save directly instead —
+but many cannot write reliably, so a dedicated tool is the dependable path.
+
+**Opening** needs no tool at all — only a plain instruction any AI with
+read access to the folder can follow. The canonical open instruction is:
+
+```
+In your Google Drive, open the «project» folder inside PREP
+and read PREP.md to continue.
+```
+
+The AI reads the standard from the folder itself and continues from
+Section 9.1. This natural-language line is the standard's one required
+piece of user-facing syntax; everything else the AI learns from `PREP.md`.
+
+An implementation MAY additionally accept a short command set as a
+convenience, and SHOULD accept plain phrasing for the same intent ("save
+this", "what do I have?"):
 
 ```
 prep save             save this conversation into the current project
@@ -237,10 +260,8 @@ prep check            verify the folder against its MAP
 prep archive <name>   move a finished project into archive/
 ```
 
-The commands are plain text and belong to no platform. The very first
-contact is different: before an AI has read the standard it knows no
-commands, so a person bootstraps with ordinary language — *"read my PREP
-folder"* — and the AI learns the rest from the folder itself.
+These commands are optional sugar for prompt-based implementations; they
+belong to no platform and no implementation is required to support them.
 
 ### 9.1 Open
 
@@ -255,10 +276,10 @@ root folder's contents).
 
 ### 9.2 Save
 
-Saving is the user's call — `prep save`. An implementation **MUST NOT
-offer to save** during a conversation: people talk freely, and a tool
-that keeps asking "shall I save this?" is a tool people stop using. The
-one exception: when a conversation has grown long enough to risk losing
+Saving is always the user's call. An implementation **MUST NOT offer to
+save** during a conversation: people talk freely, and a tool that keeps
+asking "shall I save this?" is a tool people stop using. The one
+exception: when a conversation has grown long enough to risk losing
 context, it MAY offer once.
 
 Saving MUST NOT interrogate. The implementation writes the summary
@@ -341,8 +362,11 @@ reads as a choice, not an oversight.
   guidance travels with the version line.
 - **Per-file metadata headers.** The MAP is the single source of
   location and purpose.
-- **App or automation creation.** PREP standardises project *memory*;
-  building tools on top of it is a separate concern for a later version.
+
+PREP standardises project *memory*; the tools built on top of it are not
+part of the specification. [PREP Save](https://save.prep.md) is the
+reference implementation of the save flow (Section 9), and anyone may
+build others — the folder is the contract.
 
 ## 12. Versioning
 
@@ -359,7 +383,11 @@ changes MUST increment the version.
   `open`, `list`, `new`, `check`, `archive`). Saving is now strictly
   user-initiated: implementations must not offer to save during a
   conversation, and must write the summary themselves rather than ask
-  for one.
+  for one. *Amended 2026-07-23:* Section 9 now leads with saving via a
+  dedicated tool ([PREP Save](https://save.prep.md), the reference
+  implementation) and a single canonical open instruction; the `prep`
+  command set is optional convenience for prompt-based implementations.
+  The folder format is unchanged.
 - **v0.2 — 2026-07-14.** Established the standard's own home at
   https://prep.md (canonical URL in every identification line). Added
   `TOOLS.md` as an optional component — a catalogue of tools, APIs and

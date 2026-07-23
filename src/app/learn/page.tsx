@@ -21,10 +21,10 @@ export default function LearnPage() {
     <div className="wrap">
       <section className="hero">
         <p className="eyebrow">Learn</p>
-        <h1>Guides, answers, and articles</h1>
+        <h1>Guides and articles</h1>
         <p>
-          How to use PREP with any AI — and what to do when a file connector
-          gets in the way. Start with the troubleshooting guide, then read on.
+          How PREP works, and why keeping your project&apos;s memory in your own
+          Google Drive lets any AI pick up where you left off.
         </p>
       </section>
 

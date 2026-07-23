@@ -23,9 +23,9 @@ export const seo: Record<"home" | "spec" | "about" | "learn", RouteSeo> = {
   learn: {
     path: "/learn",
     canonical: "https://prep.md/learn",
-    title: "Learn PREP — Guides, FAQ, and Articles",
+    title: "Learn PREP — Guides and Articles",
     description:
-      "Guides and answers for using PREP with any AI: troubleshooting connectors, PREP vs AGENTS.md, keeping project memory across ChatGPT, Claude and Gemini.",
+      "Guides on using PREP with any AI: PREP vs AGENTS.md, why AI forgets your project, and keeping project memory across ChatGPT, Claude and Gemini.",
   },
   about: {
     path: "/about",

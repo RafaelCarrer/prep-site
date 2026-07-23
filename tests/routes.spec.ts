@@ -47,11 +47,10 @@ const pages = [
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder", "inside", "inspect the contents on GitHub"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
-  { file: "learn/index.html", must: ["Guides", "Articles", "Troubleshooting", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Why AI forgets your project", "Published", "Updated"] },
-  { file: "learn/why-ai-forgets-your-project/index.html", must: ["Read my PREP folder", "prep save", "The chat is temporary", "Published:", "Copy link"] },
-  { file: "learn/troubleshooting/index.html", must: ["access Google Drive this turn", "newest", "one file per reply", "save changes to it", "Updated:", "Copy link", "Last checked", "Which AIs can read and write"] },
+  { file: "learn/index.html", must: ["Articles", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Why AI forgets your project", "Published"] },
+  { file: "learn/why-ai-forgets-your-project/index.html", must: ["PREP Save", "memory/", "The chat is temporary", "Published:", "Copy link"] },
   { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI", "Published:", "Copy link", "WhatsApp"] },
-  { file: "learn/switch-chatgpt-to-claude/index.html", must: ["Read my PREP folder", "memory/", "Published:", "Copy link"] },
+  { file: "learn/switch-chatgpt-to-claude/index.html", must: ["PREP Save", "memory/", "Published:", "Copy link"] },
 ];
 
 for (const p of pages) {
@@ -92,7 +91,6 @@ test("robots.txt and sitemap.xml built", () => {
     "https://prep.md/spec/",
     "https://prep.md/about/",
     "https://prep.md/learn/",
-    "https://prep.md/learn/troubleshooting/",
     "https://prep.md/learn/prep-vs-agents-md/",
   ]) {
     assert.ok(sitemap.includes(`<loc>${u}</loc>`), `sitemap missing ${u}`);

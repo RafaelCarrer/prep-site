@@ -102,20 +102,19 @@ choose the evening flight, reject two hotels, reserve one near Termini
 station and decide that Tuesday will stay free because one traveller needs a
 slower day.
 
-When the work is worth keeping, you type:
+When the work is worth keeping, you save it with
+[PREP Save](https://save.prep.md). You paste the conversation's summary,
+and PREP Save writes a short snapshot such as
+`memory/2026-07-18-rome-itinerary.md` straight into your project folder in
+your own Google Drive. It records the confirmed decisions, the current
+itinerary and the next action: check the last airport train and book it if
+the arrival time works. It adds a dated entry to `LOG.md` and updates the
+status in `PREP.md`. Your files never leave your Drive.
 
-`prep save`
+The next morning, you open another AI and tell it where to look:
 
-The AI writes a short snapshot such as `memory/2026-07-18-rome-itinerary.md`.
-It records the confirmed decisions, the current itinerary and the next
-action: check the last airport train and book it if the arrival time works.
-It adds a dated entry to `LOG.md`, updates the status in `PREP.md` where
-appropriate, and reads the files back before reporting that the save
-succeeded.
-
-The next morning, you open another AI and say:
-
-`Read my PREP folder`
+> In my Google Drive, open the **Rome** folder inside PREP and read
+> PREP.md to continue.
 
 The new assistant reads the entry point, the relevant history and the latest
 snapshot. It sees the evening arrival, the hotel near Termini, the slow
@@ -125,27 +124,22 @@ timetable instead of explaining the holiday again.
 The handover is short because the folder contains conclusions, not the full
 archaeology of how you reached them.
 
-## What if the AI cannot write files?
+## What if the AI cannot read the folder?
 
-File connectors vary. Some assistants can read a cloud folder but cannot
-create or update files inside it. That limitation should slow the workflow,
-not destroy it.
+Saving is the easy half: PREP Save writes the snapshot into your Drive and
+verifies it, so you never depend on a chat's shaky file access to keep your
+memory safe.
 
-If the assistant cannot write, it can produce the complete snapshot as text,
-with the exact filename and destination:
+Reading varies more. Most assistants with a Google Drive connector can open
+the folder directly when you name it. If one cannot, the folder still works:
+because it is plain text, you can open `PREP.md` yourself and paste it in.
+The assistant reads the same conclusions and continues normally. A better
+connector makes this faster, but it is never required for the project to
+remain understandable.
 
-`memory/2026-07-18-rome-itinerary.md`
-
-The traveller saves it manually. The next assistant reads the same file and
-continues normally. A more capable connector makes the process faster, but
-it is not required for the project to remain understandable.
-
-The same rule applies to verification. An assistant should not say "Saved"
-merely because it attempted a write. It should read the created file back.
-If it cannot verify the result, it should say so plainly.
-
-Reliable memory is less about pretending every integration works and more
-about making failure visible.
+That is the point of keeping the memory in ordinary files. It does not
+depend on any single integration working perfectly — it stays readable by a
+person or by any AI, on any day.
 
 ## Keep the memory smaller than the work
 
@@ -164,6 +158,6 @@ same place to begin.
 
 The chat is temporary. The project is permanent.
 
-Read the [PREP specification](https://prep.md/spec), or
-[download the starter folder](https://prep.md/download) and try the handover
-with one real project.
+[Save your first project with PREP Save →](https://save.prep.md) — or read
+the [PREP specification](https://prep.md/spec) to see how the folder works
+underneath.
