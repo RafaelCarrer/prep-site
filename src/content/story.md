@@ -91,12 +91,17 @@ sentence is the only syntax you ever need.
 
 ## Honest status
 
-This is day one in public. Google's OAuth verification for the Drive scope is
-still in review, so when you sign in you'll see the "Google hasn't verified
-this app" screen, and there's a 100-user cap until it clears. The folder
-format doesn't need the app at all — you can create the files by hand on any
-drive (Dropbox, OneDrive, Nextcloud); PREP Save just automates the Google
-Drive case for now.
+This is day one in public, built by one person around a day job — so expect
+rough edges, and tell me when you hit one.
+
+On permissions: PREP Save asks Google for a single scope, `drive.file` —
+per-file access to the files it creates. It cannot see the rest of your
+Drive, and your content never touches a server of mine.
+
+The folder format doesn't need the app at all. You can create the three files
+by hand on any drive — Dropbox, OneDrive, Nextcloud, a local folder — and any
+AI with access can read them. PREP Save just automates the Google Drive case
+for now.
 
 ## What I'd like to know
 
