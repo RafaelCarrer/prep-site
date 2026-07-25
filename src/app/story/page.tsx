@@ -4,9 +4,10 @@ import { join } from "node:path";
 import { marked } from "marked";
 
 const canonical = "https://prep.md/story";
-const title = "PREP.md — project memory in a folder any AI can read";
+const title =
+  "PREP.md — a structured project folder any AI can pick up in seconds";
 const description =
-  "You build a project with one AI, switch to another, and lose everything. PREP gives the project its own memory — a folder any AI can open and continue.";
+  "You build a project with one AI, switch to another, and lose everything. PREP gives the project its own memory: a structure that tells any AI where things stand and only what to read next — clear, portable, token-cheap.";
 
 export const metadata: Metadata = {
   title,

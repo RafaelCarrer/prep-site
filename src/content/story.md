@@ -1,15 +1,23 @@
-# PREP.md — project memory in a folder any AI can read
+# PREP.md — a structured project folder any AI can pick up in seconds
 
-You spend two weeks building something with an AI — a business plan, a
-codebase, a research project. The conversation gets long and heavy, and the
-model starts forgetting the decisions you made on day one. Or a better model
-comes out, you switch, and you're back to explaining everything from scratch.
+I'm a kitchen manager in London, not a programmer — but I use AI every day,
+and I kept hitting the same wall.
 
-The knowledge you built lives trapped inside one chat, in one product, and it
-vanishes when the tab closes.
+I'd spend two weeks building something in ChatGPT — a plan, a project, a
+piece of writing. Then the conversation would grow long and heavy, and the
+model would start forgetting the decisions I'd made on day one. Or a better
+model came out, I'd switch to it, and I was back to explaining everything
+from scratch.
 
-The fix isn't a smarter model. It's giving the project its own memory —
-outside the chat.
+The knowledge I'd built lived trapped inside one chat, in one product, and
+vanished when the tab closed. I was spending my time being unpaid memory for
+a machine.
+
+The fix wasn't a smarter model. It was giving the project its own memory —
+kept outside the chat, in a **structure** any AI can read quickly: what the
+project is, where it stands, and only the part it needs to read next. That
+last bit matters — the AI doesn't re-read everything, so it picks the project
+up in seconds, not tokens.
 
 ## The whole idea: a folder, not a chat
 
@@ -24,14 +32,15 @@ Sunday Sourdough/
 ```
 
 That's the whole core. Three files with agreed names. `PREP.md` is the entry
-point — it tells any AI what the project is, where it stands now, and which
-files to read. `LOG.md` is the scannable timeline. `memory/` holds the full
-snapshots.
+point, and it carries a small **MAP** — it tells the AI what each file is and
+*when* to read it. So the AI boots light: it reads the entry point and only
+what the task needs, instead of scanning the whole history. Clear, structured,
+and cheap on tokens — even years in.
 
-Any AI that can read the folder opens the project, sees exactly where things
-stand, and continues — today in ChatGPT, tomorrow in Claude, without losing a
-thing. The conversation becomes a temporary interface over a permanent
-project.
+`LOG.md` is the scannable timeline. `memory/` holds the full snapshots. Any AI
+that can read the folder opens the project, sees exactly where things stand,
+and continues — today in ChatGPT, tomorrow in Claude, without losing a thing.
+The conversation becomes a temporary interface over a permanent project.
 
 It's plain markdown. No app required, no account, no lock-in. If a folder
 follows the convention, any tool can support it.
@@ -40,9 +49,9 @@ follows the convention, any tool can support it.
 
 A three-week conversation is mostly noise — jokes, dead ends, corrections,
 things you tried and dropped. Pasting it asks the new model to pan for a few
-grams of gold in all that gravel, and it will miss some. A snapshot is the
-gold, already separated: the decisions, the current state, what comes next.
-Smaller than the work, on purpose.
+grams of gold in all that gravel, and it will miss some (and pay tokens to
+read the gravel). A snapshot is the gold, already separated: the decisions,
+the current state, what comes next. Smaller than the work, on purpose.
 
 ## Two things you do: save and open
 
@@ -65,8 +74,8 @@ sentence is the only syntax you ever need.
 
 - **The memory belongs to the project, not the AI.** Switch models or devices
   freely; your work outlives any single vendor.
-- **Boot light.** `PREP.md` carries a MAP that tells the AI what to read and
-  when, so it never scans the whole folder — fast, even years in.
+- **Boot light.** The MAP tells the AI what to read and when, so it never
+  scans the whole folder — fast and token-cheap, even years in.
 - **Verify before "saved."** A save counts only once the file is written and
   read back. You're never told it saved when it wasn't.
 - **Secrets by reference.** PREP files are read into a chat, so they never
@@ -89,13 +98,11 @@ format doesn't need the app at all — you can create the files by hand on any
 drive (Dropbox, OneDrive, Nextcloud); PREP Save just automates the Google
 Drive case for now.
 
-## Why I built it
+## What I'd like to know
 
-I'm a kitchen manager in London, not a programmer. In a kitchen, *prep* means
-everything ready before service begins — everything in its place, so the work
-can flow. I kept losing that with AI: knowing it could help, but losing
-everything the moment a chat grew heavy or I switched models. So I gave my
-projects their own mise en place. This is it.
+In a kitchen, *prep* means everything in its place before service begins, so
+the work can flow. PREP is that for a project: any AI opens the folder, and
+service begins.
 
 If the three-file core is missing something, or it breaks for the way you
-work, I'd genuinely like to know.
+work, I'd genuinely like to hear it.
