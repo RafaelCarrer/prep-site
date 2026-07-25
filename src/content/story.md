@@ -49,10 +49,11 @@ follows the convention, any tool can support it.
 ## Why not just paste the old chat?
 
 A long conversation is mostly noise. Jokes, dead ends, corrections, things you
-tried and dropped. Pasting it asks the new model to pan for a few grams of
-gold in all that gravel, and it will miss some, while paying tokens to read
-the gravel. A snapshot is the gold, already separated: the decisions, the
-current state, what comes next. Smaller than the work, on purpose.
+tried and dropped. Pasting it asks the new model to sift through all of that
+and work out for itself what still counts, and it will get some of it wrong,
+while paying tokens to read the parts that stopped mattering weeks ago. A
+snapshot is what matters, already separated: the decisions, the current state,
+what comes next. Smaller than the work, on purpose.
 
 ## Two things you do: save and open
 
@@ -69,7 +70,7 @@ content.
 **Open.** To continue the project in a fresh tab of any AI model, or to get an
 agent up to speed on it, you say this in plain words:
 
-> In my Google Drive, open the «project» folder inside PREP and read PREP.md.
+> In my Google Drive, open the «project folder» inside PREP and read PREP.md.
 
 The AI reads the standard from the folder itself and continues from where you
 stopped. That one sentence is the only syntax you ever need.
@@ -92,8 +93,10 @@ rough edges and tell me when you hit one.
 
 The folder format doesn't need the app at all. You can create the three files
 by hand on any drive (Dropbox, OneDrive, Nextcloud, even a local folder) and
-any AI with access can read them. PREP Save just automates the Google Drive
-case for now.
+any AI with access can read them. If you'd rather start that way, there's a
+[starter folder as a zip](https://prep.md/prep-starter.zip) with the three
+files ready to fill in. PREP Save just automates the Google Drive case for
+now.
 
 ## What I'd like to know
 
@@ -101,8 +104,8 @@ In a kitchen, *prep* means everything in its place before service begins, so
 the work can flow. PREP is that for a project: any AI opens the folder, and
 service begins.
 
-> **If the three-file core is missing something, or it breaks for the way you
-> work, I'd genuinely like to hear it.**
+**If the three-file core is missing something, or it breaks for the way you
+work, I'd genuinely like to hear it.**
 
 ## Try it
 
