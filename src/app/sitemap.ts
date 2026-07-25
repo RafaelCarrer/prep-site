@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://prep.md/", lastModified, changeFrequency: "weekly", priority: 1 },
     { url: "https://prep.md/spec/", lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: "https://prep.md/learn/", lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: "https://prep.md/story/", lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: "https://prep.md/about/", lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: "https://prep.md/privacy/", lastModified, changeFrequency: "yearly", priority: 0.3 },
     { url: "https://prep.md/terms/", lastModified, changeFrequency: "yearly", priority: 0.3 },
