@@ -58,6 +58,12 @@ export default function PrivacyPage() {
             advertising or error-monitoring services.
           </li>
           <li>
+            We use Vercel Web Analytics to count page views, so we know roughly
+            how many people visit and which pages they use. It is cookieless,
+            does not track you across sites, and never receives your snapshot
+            content or the names of your files or projects.
+          </li>
+          <li>
             The Google Drive access token is held temporarily in the active
             application session and is not intentionally written by PREP Save to
             localStorage or cookies.
@@ -123,7 +129,7 @@ export default function PrivacyPage() {
 
         <hr />
         <p>
-          <em>Last updated: 23 July 2026.</em> See also our{" "}
+          <em>Last updated: 25 July 2026.</em> See also our{" "}
           <Link href="/terms" className="text-link">
             Terms of Use
           </Link>
