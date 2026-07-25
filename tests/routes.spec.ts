@@ -35,8 +35,12 @@ test("prompt integrity: embedded prompt matches canonical", () => {
   assert.ok(s.startsWith("# PREP v0.3"));
   assert.ok(s.includes("https://prep.md"));
   assert.ok(!s.includes("ameti.app/prep"));
-  // v0.3: commands exist and the no-nagging rule is present
-  assert.ok(s.includes("prep save"));
+  // Plain language only: the `prep …` command syntax was dropped in favour
+  // of natural phrasing plus the one canonical open instruction.
+  assert.ok(!s.includes("prep save"), "prompt still teaches the old command syntax");
+  assert.ok(s.includes("There is no command language"));
+  assert.ok(s.includes("«project folder»"));
+  assert.ok(s.includes("save.prep.md"));
   assert.ok(s.includes("Never offer to save"));
   assert.ok(s.includes("default name `PREP/`"));
 });
