@@ -20,6 +20,10 @@ only the part it needs to read next. That last part matters. The AI doesn't
 re-read everything, so it picks the project up in seconds, and it doesn't burn
 tokens doing it.
 
+In a kitchen, *prep* means everything in its place before service begins, so
+the work can flow. That's where the name comes from, and it's what this does
+for a project.
+
 ## The whole idea: a folder, not a chat
 
 PREP is a convention, not a product. A project is an ordinary folder in your
@@ -98,14 +102,28 @@ any AI with access can read them. If you'd rather start that way, there's a
 files ready to fill in. PREP Save just automates the Google Drive case for
 now.
 
-## What I'd like to know
+## Help shape it
 
-In a kitchen, *prep* means everything in its place before service begins, so
-the work can flow. PREP is that for a project: any AI opens the folder, and
-service begins.
+This is v0.3, which means the shape isn't settled yet. PREP is an open
+standard under CC BY, so what it becomes depends on the people who use it,
+not on me alone. If you try it and something is wrong, that is worth more to
+me than a compliment.
 
-**If the three-file core is missing something, or it breaks for the way you
-work, I'd genuinely like to hear it.**
+Three things I'd genuinely like to hear:
+
+- Is the three-file core the right minimum, or is something missing?
+- Where does it break for the way you work?
+- What did you try to do that the standard had no answer for?
+
+**If you have an opinion, it can still change the standard. Bring it to
+[GitHub Discussions](https://github.com/RafaelCarrer/prep.md/discussions),
+or write to hello@prep.md.**
+
+The last two changes to the spec came from things breaking in real use, not
+from planning ahead: one rule exists because a platform could create files
+but not edit them, and the whole save flow was rewritten once it was clear
+that chat assistants can't be trusted to write files. That's the kind of
+report I'm asking for.
 
 ## Try it
 
