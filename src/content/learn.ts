@@ -104,8 +104,38 @@ function loadAll(): { entry: LearnEntry; body: string }[] {
     .map((f) => readEntry(f.replace(/\.md$/, "")));
 }
 
-// Read once at build time. The static export means this never runs per request.
-const LOADED = loadAll();
+/**
+ * Today in UTC, as YYYY-MM-DD. Dates are compared as plain strings, which
+ * works because the format sorts lexicographically.
+ */
+function todayISO(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * Scheduled publishing.
+ *
+ * A piece dated in the future is written, committed and invisible: it is
+ * dropped here, so it stays out of the listings, the sitemap, and the
+ * generated routes until its day arrives. A daily rebuild is what makes it
+ * appear (see .github/workflows/publish-scheduled.yml).
+ *
+ * This exists so a week away, or a heavy week at work, does not mean silence:
+ * write several pieces calmly in advance and let them land on their own.
+ */
+const ALL = loadAll();
+const TODAY = todayISO();
+const LOADED = ALL.filter((x) => x.entry.date <= TODAY);
+
+const queued = ALL.length - LOADED.length;
+if (queued > 0) {
+  const next = ALL.map((x) => x.entry.date)
+    .filter((d) => d > TODAY)
+    .sort()[0];
+  console.log(
+    `learn: ${queued} scheduled post${queued === 1 ? "" : "s"} held back, next on ${next}`
+  );
+}
 
 export const learn: LearnEntry[] = LOADED.map((x) => x.entry);
 
