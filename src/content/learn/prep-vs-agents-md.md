@@ -1,3 +1,10 @@
+---
+title: PREP vs AGENTS.md — when to use each
+description: AGENTS.md tells a coding agent how to behave inside your repo. PREP tells any AI everything about your project. They solve different problems and compose well.
+date: 2026-07-17
+audience: builders
+art: map
+---
 # PREP vs AGENTS.md — when to use each
 
 If you work with AI coding tools, you have probably seen `AGENTS.md`: a file

@@ -832,10 +832,11 @@ section {
   align-items: center;
   margin-top: 26px;
 }
-.paper-lead:not(:has(.paper-lead-art)) { grid-template-columns: 1fr; }
+
 .paper-lead-art {
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
   border-radius: 4px;
   display: block;
 }
@@ -895,6 +896,7 @@ section {
 .paper-card-art {
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
   border-radius: 3px;
   display: block;
   margin-bottom: 8px;
@@ -974,4 +976,13 @@ section {
   .paper-rail { border-left: 0; padding-left: 0; }
   .paper-river li { flex-wrap: wrap; gap: 8px; }
   .paper-river-title { flex-basis: 100%; order: 3; }
+}
+
+/* Track banner over each audience section */
+.paper-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }

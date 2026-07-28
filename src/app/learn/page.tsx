@@ -15,6 +15,7 @@ import {
   type LearnEntry,
 } from "@/content/learn";
 import { seo } from "@/content/seo";
+import { ArticleArt, TrackBanner } from "@/components/article-art";
 
 export const metadata: Metadata = {
   title: seo.learn.title,
@@ -31,13 +32,14 @@ function Tag({ audience }: { audience: LearnAudience }) {
   return <span className="paper-tag">{AUDIENCE_TAG[audience]}</span>;
 }
 
-/** A card in one of the two audience columns. Art is optional. */
+/** A card in one of the two audience columns. Only the first one gets art. */
 function Card({ entry, withArt }: { entry: LearnEntry; withArt?: boolean }) {
   return (
     <li className="paper-card">
-      {withArt && entry.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img className="paper-card-art" src={entry.image} alt="" />
+      {withArt ? (
+        <Link href={`/learn/${entry.slug}`} aria-hidden tabIndex={-1}>
+          <ArticleArt slug={entry.slug} art={entry.art} className="paper-card-art" />
+        </Link>
       ) : null}
       <Link href={`/learn/${entry.slug}`} className="paper-card-title">
         {entry.title}
@@ -54,6 +56,7 @@ function Section({ audience }: { audience: LearnAudience }) {
   if (entries.length === 0) return null;
   return (
     <section className="paper-col" aria-labelledby={`sec-${audience}`}>
+      <TrackBanner audience={audience} />
       <h2 id={`sec-${audience}`} className="paper-section">
         {AUDIENCE_SECTION[audience]}
       </h2>
@@ -83,10 +86,9 @@ export default function LearnPage() {
 
       {/* The lead. Hand-picked, not driven by traffic. */}
       <article className="paper-lead">
-        {lead.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className="paper-lead-art" src={lead.image} alt="" />
-        ) : null}
+        <Link href={`/learn/${lead.slug}`} aria-hidden tabIndex={-1}>
+          <ArticleArt slug={lead.slug} art={lead.art} className="paper-lead-art" />
+        </Link>
         <div className="paper-lead-body">
           <Tag audience={lead.audience} />
           <h2>

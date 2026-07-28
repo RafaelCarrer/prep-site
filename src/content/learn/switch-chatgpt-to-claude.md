@@ -1,3 +1,10 @@
+---
+title: How to switch from ChatGPT to Claude without losing context
+description: Switch AI models without re-explaining your project. Keep the context in a PREP folder and any AI picks up exactly where you left off.
+date: 2026-07-18
+audience: everyday
+art: switch
+---
 # How to switch from ChatGPT to Claude without losing context
 
 You switch AI models for one reason. Another one got better at something

@@ -1,10 +1,28 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { marked } from "marked";
 
-// Who the piece is written for. Drives the two sections on /learn and the
-// tag shown on each card. Section headings speak to the reader ("If you use
-// AI"); tags have to fit in a chip next to a title, so they stay short.
+/**
+ * The /learn registry is the folder itself.
+ *
+ * Publishing an article means dropping ONE markdown file into
+ * src/content/learn/ with a frontmatter block. There is deliberately no
+ * hand-kept list to update: the automation only has to write a file, and it
+ * is impossible to end up with a piece that exists but is not listed, or
+ * listed but missing.
+ *
+ *   ---
+ *   title: Why AI forgets your project
+ *   description: One or two lines, used on the cards and for search.
+ *   date: 2026-07-18
+ *   audience: everyday        # everyday | builders
+ *   art: files                # optional, see MOTIFS in article-art.tsx
+ *   featured: true            # optional, at most one. Picks the lead.
+ *   ---
+ */
+
+// Who the piece is written for. Section headings speak to the reader
+// ("If you use AI"); tags stay short because they sit next to titles.
 export type LearnAudience = "everyday" | "builders";
 
 export const AUDIENCE_SECTION: Record<LearnAudience, string> = {
@@ -21,46 +39,75 @@ export interface LearnEntry {
   slug: string;
   title: string;
   description: string;
-  // ISO date (YYYY-MM-DD). Used for ordering and for the "latest post" line.
+  /** ISO date (YYYY-MM-DD). Orders the archive and sets the dateline. */
   date: string;
   audience: LearnAudience;
-  // One piece runs as the lead on /learn. Chosen by hand, not by traffic.
+  /** Motif key for the drawn cover. Falls back to a stable pick per slug. */
+  art?: string;
+  /** At most one piece runs as the lead. Chosen by hand, not by traffic. */
   featured?: boolean;
-  // Optional art, served from /public. Everything degrades to type-only when
-  // a piece has no image, which is the normal case until the art pipeline
-  // starts feeding this.
-  image?: string;
 }
 
-// The /learn registry. Newest first is not required here: the page sorts.
-// Every entry needs a matching markdown file at src/content/learn/<slug>.md.
-export const learn: LearnEntry[] = [
-  {
-    slug: "why-ai-forgets-your-project",
-    title: "Why AI forgets your project (and how to fix it)",
-    description:
-      "AI forgets your project because chat context is temporary. A simple project folder gives every assistant the same durable memory.",
-    date: "2026-07-18",
-    audience: "everyday",
-    featured: true,
-  },
-  {
-    slug: "switch-chatgpt-to-claude",
-    title: "How to switch from ChatGPT to Claude without losing context",
-    description:
-      "Switch AI models without re-explaining your project. Keep the context in a PREP folder and any AI picks up exactly where you left off.",
-    date: "2026-07-18",
-    audience: "everyday",
-  },
-  {
-    slug: "prep-vs-agents-md",
-    title: "PREP vs AGENTS.md — when to use each",
-    description:
-      "AGENTS.md tells a coding agent how to behave inside your repo. PREP tells any AI everything about your project. They solve different problems and compose well.",
-    date: "2026-07-17",
-    audience: "builders",
-  },
-];
+const LEARN_DIR = join(process.cwd(), "src", "content", "learn");
+
+/**
+ * Minimal frontmatter reader: `key: value` lines between --- fences.
+ * Deliberately hand-rolled rather than pulling in a YAML dependency, since
+ * the shape is fixed and flat.
+ */
+function parseFrontmatter(raw: string): {
+  data: Record<string, string>;
+  body: string;
+} {
+  const text = raw.replace(/^﻿/, "").replace(/\r\n/g, "\n");
+  const match = text.match(/^---\n([\s\S]*?)\n---\n?/);
+  if (!match) return { data: {}, body: text };
+  const data: Record<string, string> = {};
+  for (const line of match[1].split("\n")) {
+    const i = line.indexOf(":");
+    if (i === -1) continue;
+    const key = line.slice(0, i).trim();
+    let value = line.slice(i + 1).trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+    if (key) data[key] = value;
+  }
+  return { data, body: text.slice(match[0].length) };
+}
+
+function readEntry(slug: string): { entry: LearnEntry; body: string } {
+  const raw = readFileSync(join(LEARN_DIR, `${slug}.md`), "utf8");
+  const { data, body } = parseFrontmatter(raw);
+  const audience: LearnAudience =
+    data.audience === "builders" ? "builders" : "everyday";
+  return {
+    entry: {
+      slug,
+      title: data.title ?? slug,
+      description: data.description ?? "",
+      date: data.date ?? "",
+      audience,
+      art: data.art || undefined,
+      featured: data.featured === "true",
+    },
+    body,
+  };
+}
+
+function loadAll(): { entry: LearnEntry; body: string }[] {
+  return readdirSync(LEARN_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => readEntry(f.replace(/\.md$/, "")));
+}
+
+// Read once at build time. The static export means this never runs per request.
+const LOADED = loadAll();
+
+export const learn: LearnEntry[] = LOADED.map((x) => x.entry);
 
 export function learnBySlug(slug: string): LearnEntry | undefined {
   return learn.find((e) => e.slug === slug);
@@ -85,12 +132,8 @@ export function formatShort(iso: string): string {
     .toUpperCase();
 }
 
-function byDateDesc(a: LearnEntry, b: LearnEntry): number {
-  return b.date.localeCompare(a.date);
-}
-
 export function articles(): LearnEntry[] {
-  return [...learn].sort(byDateDesc);
+  return [...learn].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /** The hand-picked lead. Falls back to the newest piece. */
@@ -114,25 +157,26 @@ export function latest(limit = 20): LearnEntry[] {
 /**
  * Date of the most recent piece. Deliberately not "today": a masthead that
  * always shows today's date tells the reader nothing and implies a freshness
- * we may not have. This is true and it costs nothing to keep honest.
+ * we may not have.
  */
 export function latestDate(): string {
   return articles()[0]?.date ?? "";
 }
 
-/** Rough reading time from the markdown body, at ~200 words per minute. */
-export function readingTime(slug: string): number {
-  const words = learnMarkdown(slug).trim().split(/\s+/).length;
-  return Math.max(1, Math.round(words / 200));
+function bodyOf(slug: string): string {
+  const found = LOADED.find((x) => x.entry.slug === slug);
+  if (!found) throw new Error(`learn: no article named ${slug}`);
+  return found.body;
 }
 
-function learnMarkdown(slug: string): string {
-  const path = join(process.cwd(), "src", "content", "learn", `${slug}.md`);
-  return readFileSync(path, "utf8");
+/** Rough reading time from the markdown body, at ~200 words per minute. */
+export function readingTime(slug: string): number {
+  const words = bodyOf(slug).trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 // Rendered at build time from the bundled markdown body.
 export function learnHtml(slug: string): string {
   marked.setOptions({ gfm: true });
-  return marked.parse(learnMarkdown(slug)) as string;
+  return marked.parse(bodyOf(slug)) as string;
 }
