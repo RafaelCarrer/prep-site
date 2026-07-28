@@ -7,6 +7,8 @@ import {
   learnBySlug,
   learnHtml,
   formatDate,
+  readingTime,
+  AUDIENCE_TAG,
 } from "@/content/learn";
 
 export function generateStaticParams() {
@@ -44,10 +46,6 @@ export default async function LearnEntryPage({
   const entry = learnBySlug(slug);
   if (!entry) notFound();
   const html = learnHtml(entry.slug);
-  const dateLabel =
-    entry.kind === "guide"
-      ? `Updated: ${formatDate(entry.date)}`
-      : `Published: ${formatDate(entry.date)}`;
   const url = `https://prep.md/learn/${entry.slug}`;
   return (
     <div className="wrap">
@@ -56,7 +54,10 @@ export default async function LearnEntryPage({
           ← Learn
         </Link>
       </p>
-      <p className="learn-date">{dateLabel}</p>
+      <p className="learn-date">
+        <span className="paper-tag">{AUDIENCE_TAG[entry.audience]}</span>{" "}
+        Published: {formatDate(entry.date)} · {readingTime(entry.slug)} min read
+      </p>
       <article
         className="spec-doc"
         dangerouslySetInnerHTML={{ __html: html }}

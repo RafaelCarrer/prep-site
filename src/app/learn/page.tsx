@@ -1,6 +1,19 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { guides, articles, formatDate } from "@/content/learn";
+import {
+  learn,
+  leadArticle,
+  byAudience,
+  latest,
+  latestDate,
+  readingTime,
+  formatDate,
+  formatShort,
+  AUDIENCE_SECTION,
+  AUDIENCE_TAG,
+  type LearnAudience,
+  type LearnEntry,
+} from "@/content/learn";
 import { seo } from "@/content/seo";
 
 export const metadata: Metadata = {
@@ -14,66 +27,123 @@ export const metadata: Metadata = {
   },
 };
 
+function Tag({ audience }: { audience: LearnAudience }) {
+  return <span className="paper-tag">{AUDIENCE_TAG[audience]}</span>;
+}
+
+/** A card in one of the two audience columns. Art is optional. */
+function Card({ entry, withArt }: { entry: LearnEntry; withArt?: boolean }) {
+  return (
+    <li className="paper-card">
+      {withArt && entry.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="paper-card-art" src={entry.image} alt="" />
+      ) : null}
+      <Link href={`/learn/${entry.slug}`} className="paper-card-title">
+        {entry.title}
+      </Link>
+      <p className="paper-card-meta">
+        {readingTime(entry.slug)} min read · {formatDate(entry.date)}
+      </p>
+    </li>
+  );
+}
+
+function Section({ audience }: { audience: LearnAudience }) {
+  const entries = byAudience(audience);
+  if (entries.length === 0) return null;
+  return (
+    <section className="paper-col" aria-labelledby={`sec-${audience}`}>
+      <h2 id={`sec-${audience}`} className="paper-section">
+        {AUDIENCE_SECTION[audience]}
+      </h2>
+      <ul className="paper-cards">
+        {entries.map((e, i) => (
+          <Card key={e.slug} entry={e} withArt={i === 0} />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export default function LearnPage() {
-  const g = guides();
-  const a = articles();
+  const lead = leadArticle();
+  const river = latest();
+
   return (
     <div className="wrap">
-      <section className="hero">
-        <p className="eyebrow">Learn</p>
-        <h1>Guides and articles</h1>
-        <p>
-          How PREP works, and why keeping your project&apos;s memory in your own
-          Google Drive lets any AI pick up where you left off.
+      {/* Section masthead. The site header sits above this. */}
+      <header className="paper-masthead">
+        <h1>Learn</h1>
+        <p className="paper-dateline">
+          Latest post {formatDate(latestDate())} · {learn.length}{" "}
+          {learn.length === 1 ? "article" : "articles"}
         </p>
-      </section>
+      </header>
 
-      {g.length > 0 ? (
-        <section aria-labelledby="guides-heading">
-          <h2 id="guides-heading" className="section-heading">
-            Guides
+      {/* The lead. Hand-picked, not driven by traffic. */}
+      <article className="paper-lead">
+        {lead.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="paper-lead-art" src={lead.image} alt="" />
+        ) : null}
+        <div className="paper-lead-body">
+          <Tag audience={lead.audience} />
+          <h2>
+            <Link href={`/learn/${lead.slug}`}>{lead.title}</Link>
           </h2>
-          <ul className="learn-list">
-            {g.map((e) => (
-              <li key={e.slug} className="learn-item">
-                <Link href={`/learn/${e.slug}`} className="learn-link">
-                  {e.title}
-                </Link>
-                <p className="learn-date">
-                  {e.kind === "guide" ? "Updated" : "Published"}:{" "}
-                  {formatDate(e.date)}
-                </p>
-                <p className="learn-desc">{e.description}</p>
+          <p className="paper-deck">{lead.description}</p>
+          <p className="paper-card-meta">
+            {readingTime(lead.slug)} min read · {formatDate(lead.date)}
+          </p>
+        </div>
+      </article>
+
+      <hr className="paper-rule" />
+
+      {/* Two audiences, side by side on desktop, stacked on a phone. */}
+      <div className="paper-cols">
+        <Section audience="everyday" />
+        <Section audience="builders" />
+
+        <aside className="paper-rail" aria-label="Where to start">
+          <div className="paper-rail-box">
+            <p className="paper-kicker">Start here</p>
+            <ol className="paper-rail-list">
+              <li>
+                <Link href="/story">What PREP is, in 3 minutes</Link>
               </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+              <li>
+                <a href="https://save.prep.md" rel="noopener noreferrer">
+                  Save your first project
+                </a>
+              </li>
+              <li>
+                <Link href="/spec">The three files explained</Link>
+              </li>
+            </ol>
+          </div>
+        </aside>
+      </div>
 
-      <hr className="section-rule" />
+      <hr className="paper-rule" />
 
-      <section aria-labelledby="articles-heading">
-        <h2 id="articles-heading" className="section-heading">
-          Articles
+      {/* The river. This is what carries the archive as it grows. */}
+      <section aria-labelledby="latest-heading">
+        <h2 id="latest-heading" className="paper-section">
+          Latest
         </h2>
-        {a.length > 0 ? (
-          <ul className="learn-list">
-            {a.map((e) => (
-              <li key={e.slug} className="learn-item">
-                <Link href={`/learn/${e.slug}`} className="learn-link">
-                  {e.title}
-                </Link>
-                <p className="learn-date">
-                  {e.kind === "guide" ? "Updated" : "Published"}:{" "}
-                  {formatDate(e.date)}
-                </p>
-                <p className="learn-desc">{e.description}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="prose">More articles are on the way.</p>
-        )}
+        <ul className="paper-river">
+          {river.map((e) => (
+            <li key={e.slug}>
+              <span className="paper-river-date">{formatShort(e.date)}</span>
+              <Link href={`/learn/${e.slug}`} className="paper-river-title">
+                {e.title}
+              </Link>
+              <Tag audience={e.audience} />
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );

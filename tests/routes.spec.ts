@@ -51,7 +51,9 @@ const pages = [
   { file: "download/index.html", must: ["prep-starter.zip", "Read my PREP folder", "inside", "inspect the contents on GitHub"] },
   { file: "spec/index.html", must: ["PREP — Specification v0.3", "TOOLS.md", "Security"] },
   { file: "about/index.html", must: ["kitchen manager in London", "hello@prep.md", "AGENTS.md"] },
-  { file: "learn/index.html", must: ["Articles", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Why AI forgets your project", "Published"] },
+  // Newspaper layout: masthead + honest dateline, both audience sections,
+  // the lead, and the dense river that carries the archive.
+  { file: "learn/index.html", must: ["Latest post", "articles", "If you use AI", "If you build with AI", "Everyday", "Builders", "Start here", "Latest", "min read", "PREP vs AGENTS.md", "switch from ChatGPT to Claude", "Why AI forgets your project"] },
   { file: "learn/why-ai-forgets-your-project/index.html", must: ["PREP Save", "memory/", "The chat is temporary", "Published:", "Copy link"] },
   { file: "learn/prep-vs-agents-md/index.html", must: ["AGENTS.md tells a coding agent", "compose", "any AI", "Published:", "Copy link", "WhatsApp"] },
   { file: "learn/switch-chatgpt-to-claude/index.html", must: ["PREP Save", "memory/", "Published:", "Copy link"] },

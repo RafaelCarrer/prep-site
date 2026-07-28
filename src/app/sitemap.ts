@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const learnPages: MetadataRoute.Sitemap = learn.map((e) => ({
     url: `https://prep.md/learn/${e.slug}/`,
     lastModified: new Date(e.date),
-    changeFrequency: e.kind === "guide" ? "weekly" : "monthly",
+    changeFrequency: "monthly",
     priority: 0.7,
   }));
   return [...base, ...learnPages];

@@ -794,3 +794,184 @@ section {
   align-items: center;
   min-height: 44px;
 }
+
+/* ============================================================
+   /learn, newspaper layout
+   The broadsheet feel comes from typography and hairlines only:
+   no new colour, no new font, nothing that needs an image to work.
+   Everything degrades to type when a piece has no art, which is
+   the normal case until the art pipeline feeds this.
+   ============================================================ */
+
+.paper-masthead { text-align: center; padding-top: 4px; }
+.paper-masthead h1 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--ink);
+}
+.paper-dateline {
+  font-family: var(--ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.paper-rule { border: 0; border-top: 1px solid var(--rule); margin: 26px 0; }
+
+/* ---- Lead story ---- */
+.paper-lead {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-top: 26px;
+}
+.paper-lead:not(:has(.paper-lead-art)) { grid-template-columns: 1fr; }
+.paper-lead-art {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+.paper-lead h2 {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 600;
+  margin: 8px 0 10px;
+}
+.paper-lead h2 a { color: var(--ink); text-decoration: none; }
+.paper-lead h2 a:hover { color: var(--accent); }
+.paper-deck {
+  color: var(--muted);
+  margin: 0 0 10px;
+  max-width: 60ch;
+}
+
+/* ---- Audience tag ---- */
+.paper-tag {
+  display: inline-block;
+  font-family: var(--ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--detail);
+  border: 1px solid var(--detail);
+  border-radius: 3px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* ---- Two audience columns plus the rail ---- */
+.paper-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.75fr;
+  gap: 28px;
+}
+.paper-col + .paper-col,
+.paper-rail {
+  border-left: 1px solid var(--rule);
+  padding-left: 26px;
+}
+.paper-section {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink);
+  margin: 0 0 14px;
+}
+.paper-cards { list-style: none; margin: 0; padding: 0; }
+.paper-card { margin-bottom: 18px; }
+.paper-card-art {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 8px;
+}
+.paper-card-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  text-decoration: none;
+  display: block;
+}
+.paper-card-title:hover { color: var(--accent); }
+.paper-card-meta {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+/* ---- Rail ---- */
+.paper-rail-box {
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px;
+}
+.paper-kicker {
+  font-family: var(--ui);
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--detail);
+  margin: 0 0 8px;
+}
+.paper-rail-list { margin: 0; padding-left: 18px; font-size: 0.88rem; }
+.paper-rail-list li { margin-bottom: 8px; }
+.paper-rail-list a { color: var(--ink); text-decoration: none; }
+.paper-rail-list a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ---- The river: the dense archive ---- */
+.paper-river { list-style: none; margin: 0; padding: 0; }
+.paper-river li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+}
+.paper-river li:first-child { border-top: 0; }
+.paper-river-date {
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  min-width: 56px;
+  flex-shrink: 0;
+}
+.paper-river-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  flex: 1;
+}
+.paper-river-title:hover { color: var(--accent); }
+
+/* ---- Phone: one column, in reading order ---- */
+@media (max-width: 720px) {
+  .paper-masthead h1 { font-size: 1.6rem; }
+  .paper-lead { grid-template-columns: 1fr; gap: 14px; }
+  .paper-lead h2 { font-size: 1.4rem; }
+  .paper-cols { grid-template-columns: 1fr; gap: 26px; }
+  .paper-col + .paper-col,
+  .paper-rail { border-left: 0; padding-left: 0; }
+  .paper-river li { flex-wrap: wrap; gap: 8px; }
+  .paper-river-title { flex-basis: 100%; order: 3; }
+}
