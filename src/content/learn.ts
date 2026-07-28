@@ -79,6 +79,25 @@ function parseFrontmatter(raw: string): {
   return { data, body: text.slice(match[0].length) };
 }
 
+/**
+ * Falls back to the opening prose when a piece has no description.
+ *
+ * The description does three jobs: the deck under the lead, the snippet
+ * Google shows, and the text that appears when someone pastes the link. A
+ * missing one is therefore an invisible hole rather than a visible bug, and
+ * an automated pipeline is exactly the kind of author that forgets it. A
+ * rough first paragraph beats nothing in all three places.
+ */
+function firstParagraph(body: string): string {
+  const para = body
+    .split("\n\n")
+    .map((p) => p.trim())
+    .find((p) => p && !p.startsWith("#") && !p.startsWith("```") && !p.startsWith(">"));
+  if (!para) return "";
+  const flat = para.replace(/\s+/g, " ").replace(/[*_`[\]]/g, "");
+  return flat.length > 200 ? `${flat.slice(0, 197).trimEnd()}...` : flat;
+}
+
 function readEntry(slug: string): { entry: LearnEntry; body: string } {
   const raw = readFileSync(join(LEARN_DIR, `${slug}.md`), "utf8");
   const { data, body } = parseFrontmatter(raw);
@@ -88,7 +107,7 @@ function readEntry(slug: string): { entry: LearnEntry; body: string } {
     entry: {
       slug,
       title: data.title ?? slug,
-      description: data.description ?? "",
+      description: data.description || firstParagraph(body),
       date: data.date ?? "",
       audience,
       art: data.art || undefined,
