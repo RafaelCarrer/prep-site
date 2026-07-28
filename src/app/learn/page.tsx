@@ -5,6 +5,7 @@ import {
   leadArticle,
   byAudience,
   latest,
+  popular,
   latestDate,
   readingTime,
   formatDate,
@@ -72,6 +73,7 @@ function Section({ audience }: { audience: LearnAudience }) {
 export default function LearnPage() {
   const lead = leadArticle();
   const river = latest();
+  const mostRead = popular();
 
   return (
     <div className="wrap">
@@ -125,6 +127,20 @@ export default function LearnPage() {
               </li>
             </ol>
           </div>
+
+          {/* Appears on its own once the archive is big enough to rank. */}
+          {mostRead.length > 0 ? (
+            <div className="paper-rail-popular">
+              <h2 className="paper-section">Most read</h2>
+              <ol className="paper-rail-list">
+                {mostRead.map((e) => (
+                  <li key={e.slug}>
+                    <Link href={`/learn/${e.slug}`}>{e.title}</Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ) : null}
         </aside>
       </div>
 

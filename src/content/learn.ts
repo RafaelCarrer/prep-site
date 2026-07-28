@@ -113,6 +113,28 @@ export function learnBySlug(slug: string): LearnEntry | undefined {
   return learn.find((e) => e.slug === slug);
 }
 
+/**
+ * Most read, curated by hand.
+ *
+ * Deliberately not a live counter. At low traffic a counter mostly reports
+ * what a crawler hit or what got linked once, not what is worth reading, so
+ * a monthly look at the analytics and a reorder of this list is both more
+ * honest and less machinery. Put the slugs in order, best first.
+ *
+ * The list only shows once the archive is big enough to make a ranking mean
+ * something, so it can sit here empty until then.
+ */
+export const POPULAR: string[] = [];
+
+const POPULAR_MIN_ARTICLES = 6;
+
+export function popular(limit = 3): LearnEntry[] {
+  if (learn.length < POPULAR_MIN_ARTICLES) return [];
+  return POPULAR.map((slug) => learnBySlug(slug))
+    .filter((e): e is LearnEntry => Boolean(e))
+    .slice(0, limit);
+}
+
 // "2026-07-17" -> "17 July 2026". Parsed as UTC to avoid TZ drift.
 export function formatDate(iso: string): string {
   const [y, m, d] = iso.split("-").map(Number);
