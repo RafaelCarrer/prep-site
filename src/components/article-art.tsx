@@ -105,6 +105,167 @@ export const MOTIFS: Record<string, Motif> = {
       </>
     ),
   },
+
+  // The project folder itself.
+  folder: {
+    bg: GREEN,
+    label: "An open project folder",
+    draw: (
+      <>
+        <g fill="none" stroke={PAPER} strokeWidth="2">
+          <path d="M92 64h28l8 12h80a4 4 0 014 4v56a4 4 0 01-4 4H92a4 4 0 01-4-4V68a4 4 0 014-4z" />
+        </g>
+        <g fill="none" stroke={PAPER} strokeWidth="1.4" opacity=".55">
+          <rect x="108" y="94" width="56" height="7" rx="2" />
+          <rect x="108" y="110" width="76" height="7" rx="2" />
+        </g>
+        <rect x="108" y="126" width="40" height="3" rx="1.5" fill={BRASS} />
+      </>
+    ),
+  },
+
+  // Snapshots piling up, session after session.
+  layers: {
+    bg: PAPER,
+    label: "Snapshots stacking up over time",
+    draw: (
+      <>
+        <g fill="none" stroke={GREEN} strokeWidth="2">
+          <rect x="73" y="130" width="130" height="22" rx="3" />
+          <rect x="81" y="104" width="130" height="22" rx="3" />
+          <rect x="89" y="78" width="130" height="22" rx="3" />
+        </g>
+        <rect
+          x="97"
+          y="52"
+          width="130"
+          height="22"
+          rx="3"
+          fill="none"
+          stroke={BRASS}
+          strokeWidth="2"
+        />
+      </>
+    ),
+  },
+
+  // The problem: pieces scattered, links broken.
+  scatter: {
+    bg: INK,
+    label: "Fragments scattered, the connections broken",
+    draw: (
+      <>
+        <g fill="none" stroke={PAPER} strokeWidth="1.6">
+          <rect x="50" y="52" width="46" height="26" rx="3" opacity=".8" />
+          <rect x="128" y="36" width="46" height="26" rx="3" opacity=".5" />
+          <rect x="200" y="64" width="46" height="26" rx="3" opacity=".65" />
+          <rect x="70" y="120" width="46" height="26" rx="3" opacity=".38" />
+          <rect x="158" y="130" width="46" height="26" rx="3" opacity=".7" />
+        </g>
+        <g stroke={BRASS} strokeWidth="1.4" strokeDasharray="3 4" opacity=".75">
+          <path d="M96 63l32-13M174 51l26 24M116 135l42 8" />
+        </g>
+      </>
+    ),
+  },
+
+  // Passing the project from one hand to the next.
+  handover: {
+    bg: PAPER,
+    label: "A project passed from one hand to another",
+    draw: (
+      <>
+        <g fill="none" stroke={GREEN} strokeWidth="2">
+          <path d="M84 58H60v84h24" />
+          <path d="M216 58h24v84h-24" />
+          <rect x="112" y="78" width="76" height="38" rx="4" />
+        </g>
+        <g stroke={GREEN} strokeWidth="1.4" opacity=".45">
+          <path d="M126 92h48M126 104h30" />
+        </g>
+        <path d="M112 138h64" stroke={BRASS} strokeWidth="2" strokeDasharray="5 4" />
+        <path d="M176 132l9 6-9 6z" fill={BRASS} />
+      </>
+    ),
+  },
+
+  // It stays in a drive you own.
+  drive: {
+    bg: GREEN,
+    label: "A folder kept locked in a drive you own",
+    draw: (
+      <>
+        <g fill="none" stroke={PAPER} strokeWidth="2">
+          <path d="M92 60h28l8 12h80a4 4 0 014 4v60a4 4 0 01-4 4H92a4 4 0 01-4-4V64a4 4 0 014-4z" />
+        </g>
+        <g fill="none" stroke={BRASS} strokeWidth="2.2">
+          <path d="M138 106v-9a12 12 0 0124 0v9" />
+          <rect x="132" y="106" width="36" height="26" rx="3" />
+        </g>
+      </>
+    ),
+  },
+
+  // Two things side by side.
+  compare: {
+    bg: PAPER,
+    label: "Two approaches side by side",
+    draw: (
+      <>
+        <g fill="none" stroke={GREEN} strokeWidth="2">
+          <rect x="52" y="52" width="88" height="96" rx="4" />
+          <rect x="160" y="52" width="88" height="96" rx="4" />
+        </g>
+        <g stroke={GREEN} strokeWidth="1.4" opacity=".45">
+          <path d="M68 78h56M68 94h40M68 110h48" />
+          <path d="M176 78h56M176 94h40M176 110h48" />
+        </g>
+        <path d="M150 58v84" stroke={BRASS} strokeWidth="1.6" strokeDasharray="4 5" />
+      </>
+    ),
+  },
+
+  // An agent reading the folder before it acts.
+  agent: {
+    bg: INK,
+    label: "An agent reading the folder before it acts",
+    draw: (
+      <>
+        <g fill="none" stroke={PAPER} strokeWidth="1.8">
+          <rect x="46" y="70" width="52" height="64" rx="4" />
+        </g>
+        <g stroke={PAPER} strokeWidth="1.3" opacity=".5">
+          <path d="M58 88h28M58 100h20M58 112h24" />
+        </g>
+        <path d="M104 102h34" stroke={BRASS} strokeWidth="1.6" strokeDasharray="4 4" />
+        <path d="M138 96l9 6-9 6z" fill={BRASS} />
+        <g fill="none" stroke={PAPER} strokeWidth="1.8">
+          <circle cx="176" cy="102" r="16" />
+          <circle cx="228" cy="72" r="10" />
+          <circle cx="236" cy="128" r="10" />
+          <path d="M190 94l28-14M191 111l35 12" />
+        </g>
+      </>
+    ),
+  },
+
+  // Writing things down.
+  notes: {
+    bg: PAPER,
+    label: "A written page with a folded corner",
+    draw: (
+      <>
+        <g fill="none" stroke={GREEN} strokeWidth="2">
+          <path d="M96 46h78l30 30v82a4 4 0 01-4 4H96a4 4 0 01-4-4V50a4 4 0 014-4z" />
+          <path d="M174 46v30h30" />
+        </g>
+        <g stroke={GREEN} strokeWidth="1.4" opacity=".45">
+          <path d="M112 96h72M112 112h56M112 128h64" />
+        </g>
+        <rect x="112" y="146" width="34" height="3" rx="1.5" fill={BRASS} />
+      </>
+    ),
+  },
 };
 
 export type ArtMotif = keyof typeof MOTIFS;
