@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1152" viewBox="0 0 2048 1152">
+  <!-- YouTube channel banner. Uploaded at 2048x1152, but only the centre
+       1235x338 is visible on every device: TV shows the whole thing, phones
+       show just that middle strip. So everything that matters lives inside
+       x 406 to 1642, y 407 to 745. Nothing important goes outside it. -->
+  <rect width="2048" height="1152" fill="#1E5C43"/>
+
+  <!-- Logo, inverted to read on the green field -->
+  <g transform="translate(556,476)">
+    <rect width="200" height="200" rx="53" fill="#F7F6F1"/>
+    <text x="94" y="142" font-family="Georgia, 'Times New Roman', serif" font-size="135" font-weight="600" fill="#1E5C43" text-anchor="middle">P</text>
+    <circle cx="142" cy="125" r="11.5" fill="#9A7B45"/>
+    <rect x="68" y="164" width="62" height="8" rx="4" fill="#9A7B45"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="800" y="572" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="600" fill="#F7F6F1" letter-spacing="2">PREP<tspan fill="#C4A26A">.md</tspan></text>
+
+  <!-- What it is -->
+  <text x="804" y="644" font-family="'Segoe UI', Arial, sans-serif" font-size="46" fill="#F7F6F1" opacity="0.92">Continue your projects in any AI.</text>
+
+  <!-- Brass rule, kept inside the safe strip -->
+  <rect x="804" y="686" width="300" height="4" rx="2" fill="#C4A26A"/>
+</svg>
