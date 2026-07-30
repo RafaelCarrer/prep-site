@@ -990,3 +990,18 @@ section {
 /* Most read sits under Start here, and only once there is enough to rank */
 .paper-rail-popular { margin-top: 18px; }
 .paper-rail-popular .paper-section { margin-bottom: 10px; }
+
+/* ===== Byline: who answers for the piece, and what helped write it ===== */
+.byline {
+  margin: 2.4rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.byline-date { font-variant-numeric: tabular-nums; }

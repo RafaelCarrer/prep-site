@@ -4,6 +4,8 @@ description: Switch AI models without re-explaining your project. Keep the conte
 date: 2026-07-18
 audience: everyday
 art: switch
+by: Rafael Carrer
+with: ChatGPT
 ---
 # How to switch from ChatGPT to Claude without losing context
 

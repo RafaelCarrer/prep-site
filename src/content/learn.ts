@@ -18,6 +18,8 @@ import { marked } from "marked";
  *   audience: everyday        # everyday | builders
  *   art: files                # optional, see MOTIFS in article-art.tsx
  *   featured: true            # optional, at most one. Picks the lead.
+ *   by: Rafael Carrer         # optional, defaults to Rafael Carrer
+ *   with: Claude Opus 5       # optional, the AI that helped. Comma-separated.
  *   ---
  */
 
@@ -46,6 +48,34 @@ export interface LearnEntry {
   art?: string;
   /** At most one piece runs as the lead. Chosen by hand, not by traffic. */
   featured?: boolean;
+  /** The person answering for the piece. Never an AI, see byline() below. */
+  by: string;
+  /** AI models that helped write it, in the order they worked. May be empty. */
+  with: string[];
+}
+
+const DEFAULT_AUTHOR = "Rafael Carrer";
+
+/**
+ * The line at the foot of a piece.
+ *
+ * A person is always the author, and the models are credited separately as
+ * help. That is deliberate on two counts. Google advises against giving AI an
+ * author byline while encouraging a disclosure of how something was made, and
+ * more to the point, what makes these pieces worth reading is Rafael's own
+ * experience. A model has none to lend.
+ *
+ * Whoever writes signs: when the automation drafts a piece it names its own
+ * model here, not this one.
+ */
+export function byline(entry: LearnEntry): string {
+  const helpers = entry.with;
+  if (helpers.length === 0) return `Written by ${entry.by}`;
+  const list =
+    helpers.length === 1
+      ? helpers[0]
+      : `${helpers.slice(0, -1).join(", ")} and ${helpers[helpers.length - 1]}`;
+  return `Written by ${entry.by} with ${list}`;
 }
 
 const LEARN_DIR = join(process.cwd(), "src", "content", "learn");
@@ -112,6 +142,11 @@ function readEntry(slug: string): { entry: LearnEntry; body: string } {
       audience,
       art: data.art || undefined,
       featured: data.featured === "true",
+      by: data.by || DEFAULT_AUTHOR,
+      with: (data.with || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean),
     },
     body,
   };

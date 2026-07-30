@@ -4,6 +4,8 @@ description: AGENTS.md tells a coding agent how to behave inside your repo. PREP
 date: 2026-07-17
 audience: builders
 art: compare
+by: Rafael Carrer
+with: Claude Opus 4.8
 ---
 # PREP vs AGENTS.md, when to use each
 

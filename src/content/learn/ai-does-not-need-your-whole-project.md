@@ -4,6 +4,8 @@ description: Two weeks of history in my own project folder is 129 KB. A fresh ch
 date: 2026-07-30
 audience: builders
 art: map
+by: Rafael Carrer
+with: Claude Opus 5
 ---
 # Your AI does not need to read your whole project
 
@@ -89,22 +91,39 @@ In my Google Drive, open the «project folder» inside PREP and read PREP.md.
 The MAP controls what gets read. It does nothing about what gets written, and
 right now that is the weak spot in my own folder.
 
-Chat assistants on some platforms can create files but not update them in
-place. So every time one saved a new version of a document, the old one
-stayed. My folder has 22 live files and 31 stale copies of them, about 284 KB
-of dead weight, which is more than double the live content. One prompt file
-exists in eight versions.
+My folder has 22 live files and 31 stale copies of them, about 284 KB of dead
+weight, which is more than double the live content. One prompt file exists in
+eight versions.
+
+That happened because of a difference between the tools that nobody warns you
+about, so here it is concretely. ChatGPT, writing to Drive through its
+connector, creates a new file each time it saves instead of updating the
+existing one, which is why the old versions piled up. It can move files
+though, so the tidying is a job you can hand straight back to it. The Claude
+connector I use is the other way round: it reads and creates but cannot move
+or delete anything, so it can tell me the folder is a mess and then not lift a
+finger. That is a limit of the connectors as I have them wired today, not a
+verdict on either model. Check yours before you trust it with a folder you
+care about.
+
+PREP Save updates files in place, so folders it manages do not grow this way.
+Folders written by a chat assistant do.
+
+There is a way out of this that I have not set up yet. Sync the folder to disk
+with Google's own desktop app and it stops being a cloud API at all: it is an
+ordinary directory, the assistant edits a file instead of creating another
+copy of it, and the duplicates never happen in the first place. How you
+connect an AI to your files turns out to matter as much as which AI it is. I
+want to test that properly before writing about it.
 
 The MAP keeps the AI from reading that pile, because the rule "same name
 without a number means the newest wins" is written into the folder. But
 writing a rule to work around a mess is not the same as not having the mess.
-PREP Save updates files in place, so folders it manages do not grow this way.
-Files written by a chat assistant do. I would rather say that plainly than
-show you a tidy screenshot.
+I would rather say that plainly than show you a tidy screenshot.
 
-The `STATUS` block in that same `PREP.md` is three days stale as I write
-this, for the same reason. The standard says to update it on every save. A
-standard only helps if you run it.
+The `STATUS` block in that same `PREP.md` was three days out of date when I
+started writing this. I fixed it before publishing. The standard says to
+update it on every save, and a standard only helps if you run it.
 
 ## If you want to look at the mechanism
 

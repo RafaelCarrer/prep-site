@@ -9,6 +9,7 @@ import {
   formatDate,
   readingTime,
   AUDIENCE_TAG,
+  byline,
 } from "@/content/learn";
 
 export function generateStaticParams() {
@@ -62,6 +63,10 @@ export default async function LearnEntryPage({
         className="spec-doc"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <p className="byline">
+        {byline(entry)}
+        <span className="byline-date">{formatDate(entry.date)}</span>
+      </p>
       <ShareButtons
         url={url}
         title={entry.title}

@@ -5,6 +5,8 @@ date: 2026-07-18
 audience: everyday
 art: timeline
 featured: true
+by: Rafael Carrer
+with: ChatGPT
 ---
 # Why AI forgets your project (and how to fix it)
 
