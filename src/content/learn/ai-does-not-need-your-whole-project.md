@@ -1,7 +1,7 @@
 ---
 title: Your AI does not need to read your whole project
 description: Two weeks of history in my own project folder is 129 KB. A fresh chat reads 5.5 KB of it and carries on. The MAP is what makes that possible.
-date: 2026-12-31
+date: 2026-07-31
 audience: builders
 art: map
 by: Rafael Carrer
@@ -19,11 +19,11 @@ all of it, that would be roughly 33,000 tokens spent before I have asked a
 single question. Every session. Most of it about things that have nothing to
 do with what I need today.
 
-It does not read all of it. It reads about 5.5 KB, which is around 4 percent
-of the folder, and then it knows where the project stands and what comes
-next. The thing that makes that work is a section called MAP.
+It does not read all of it. It reads about 5.5 KB, which is about 4% of the
+folder, and then it knows where the project stands and what comes next. The
+thing that makes that work is a section called MAP.
 
-## Dumping the folder is the obvious idea and it is the wrong one
+## Dumping the whole folder is the obvious idea, but it is the wrong one
 
 The first instinct when you want an AI to know a project is to give it
 everything. It is easy to implement and it feels thorough.
@@ -51,17 +51,24 @@ own folder is written in, part of it reads:
 
 ```
 ## MAP
-- CONSELHO.md, weekly briefing for the adviser. Read it at the start.
+- ADVISER.md, weekly briefing for the adviser. Read it at the start.
 - DECISIONS.md, decisions, append-only.
-- tasks/, the operations room. Start at 00-LEIA-PRIMEIRO.md.
-- INVENTARIO.md, the registry: id and parent folder of every live file.
+- tasks/, the operations room. Start at 00-READ-FIRST.md.
+- REGISTRY.md, the id and parent folder of every live file.
 - LOG.md, history. memory/, snapshots.
-- lixeira/, DEAD VERSIONS. A file in here DOES NOT EXIST.
+- trash/, DEAD VERSIONS. A file in here DOES NOT EXIST.
 ```
 
 That last line is doing more work than it looks. It tells the AI to ignore a
 whole directory. Without it, a model being helpful would read the dead
 versions and cheerfully mix them into the answer.
+
+The trash folder exists because deleting is not always on the table. Some
+assistants cannot delete a file at all, and others simply are not authorised
+to. Moving a dead version into a folder the AI has been told to ignore gets
+you the same result without anyone needing permission to destroy anything.
+It also means nothing is ever actually lost, which matters more than it
+sounds when the file in question is a record of decisions.
 
 So the open sequence is: read `PREP.md`, read the newest snapshot in
 `memory/`, then read only what the MAP points at for the task in hand. In my
@@ -88,33 +95,30 @@ In my Google Drive, open the «project folder» inside PREP and read PREP.md.
 
 ## What this does not fix
 
-The MAP controls what gets read. It does nothing about what gets written, and
-right now that is the weak spot in my own folder.
+The MAP controls what gets **read**. It does nothing about what gets
+**written**, and that is where my own folder is weak.
 
-My folder has 22 live files and 31 stale copies of them, about 284 KB of dead
-weight, which is more than double the live content. One prompt file exists in
-eight versions.
+When I measured, on 30 July, it held 22 live files and 31 stale copies of
+them. About 284 KB of dead weight, more than double the live content. One
+prompt file existed in eight versions.
 
-That happened because of a difference between the tools that nobody warns you
-about, so here it is concretely. ChatGPT, writing to Drive through its
-connector, creates a new file each time it saves instead of updating the
-existing one, which is why the old versions piled up. It can move files
-though, so the tidying is a job you can hand straight back to it. The Claude
-connector I use is the other way round: it reads and creates but cannot move
-or delete anything, so it can tell me the folder is a mess and then not lift a
-finger. That is a limit of the connectors as I have them wired today, not a
-verdict on either model. Check yours before you trust it with a folder you
-care about.
+That happens because of a limit in how these assistants reach Google Drive,
+and the limit is in my own setup. As I write this, the Claude connector I use
+creates files and reads them back. It does not update a file in place. The
+ChatGPT connector moves and edits.
+
+So every correction I make through Claude writes a new copy and leaves the
+old one sitting there. Four of those stale copies were made that same day,
+while I was writing this.
 
 PREP Save updates files in place, so folders it manages do not grow this way.
-Folders written by a chat assistant do.
 
-There is a way out of this that I have not set up yet. Sync the folder to disk
-with Google's own desktop app and it stops being a cloud API at all: it is an
+There is a way out that I have not set up yet. Sync the folder to disk with
+Google's own desktop app and it stops being a cloud API at all: it becomes an
 ordinary directory, the assistant edits a file instead of creating another
-copy of it, and the duplicates never happen in the first place. How you
-connect an AI to your files turns out to matter as much as which AI it is. I
-want to test that properly before writing about it.
+copy of it, and the duplicates never happen in the first place. **How you
+connect an AI to your files matters as much as which AI it is.** I want to
+test that properly before writing about it.
 
 The MAP keeps the AI from reading that pile, because the rule "same name
 without a number means the newest wins" is written into the folder. But
@@ -122,8 +126,9 @@ writing a rule to work around a mess is not the same as not having the mess.
 I would rather say that plainly than show you a tidy screenshot.
 
 The `STATUS` block in that same `PREP.md` was three days out of date when I
-started writing this. I fixed it before publishing. The standard says to
-update it on every save, and a standard only helps if you run it.
+started writing this. I fixed it the next day, before this went up. The
+standard says to update it on every save, and a standard only helps if you
+run it.
 
 ## If you want to look at the mechanism
 
