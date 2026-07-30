@@ -17,6 +17,12 @@ export function SiteFooter() {
           >
             GitHub
           </a>
+          <a
+            href="https://www.youtube.com/@prep_md"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </a>
           <a href="mailto:hello@prep.md">hello@prep.md</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
