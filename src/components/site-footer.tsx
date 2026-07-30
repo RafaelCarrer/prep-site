@@ -23,6 +23,9 @@ export function SiteFooter() {
           >
             YouTube
           </a>
+          <a href="https://x.com/getprepmd" rel="noopener noreferrer">
+            X
+          </a>
           <a href="mailto:hello@prep.md">hello@prep.md</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
