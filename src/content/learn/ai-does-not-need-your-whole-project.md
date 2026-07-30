@@ -1,7 +1,7 @@
 ---
 title: Your AI does not need to read your whole project
 description: Two weeks of history in my own project folder is 129 KB. A fresh chat reads 5.5 KB of it and carries on. The MAP is what makes that possible.
-date: 2026-07-30
+date: 2026-12-31
 audience: builders
 art: map
 by: Rafael Carrer

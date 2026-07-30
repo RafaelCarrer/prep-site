@@ -106,8 +106,8 @@ test("no em dashes in published prose", () => {
 // The foot of every piece says who answers for it and what helped write it.
 // A person is always the author: an AI is credited as help, never as author.
 test("byline names a person and credits the models", () => {
-  const html = readFileSync(join(out, "learn/ai-does-not-need-your-whole-project/index.html"), "utf8");
-  assert.ok(html.includes("Written by Rafael Carrer with Claude Opus 5"), "byline missing");
+  const html = readFileSync(join(out, "learn/why-ai-forgets-your-project/index.html"), "utf8");
+  assert.ok(html.includes("Written by Rafael Carrer with ChatGPT"), "byline missing");
   assert.ok(!/Written by Claude/.test(html), "an AI must never be the author");
 });
 
