@@ -146,7 +146,7 @@ connector makes this faster, but it is never required for the project to
 remain understandable.
 
 That is the point of keeping the memory in ordinary files. It does not
-depend on any single integration working perfectly — it stays readable by a
+depend on any single integration working perfectly. It stays readable by a
 person or by any AI, on any day.
 
 ## Keep the memory smaller than the work
@@ -166,6 +166,6 @@ same place to begin.
 
 The chat is temporary. The project is permanent.
 
-[Save your first project with PREP Save →](https://save.prep.md) — or read
+[Save your first project with PREP Save →](https://save.prep.md), or read
 the [PREP specification](https://prep.md/spec) to see how the folder works
 underneath.

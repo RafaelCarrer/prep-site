@@ -29,32 +29,32 @@ export default function DownloadPage() {
           What&apos;s inside
         </h2>
         <p className="prose">
-          A small zip — about 6&nbsp;KB, updated July&nbsp;2026 — containing a
+          A small zip, about 6&nbsp;KB, updated July&nbsp;2026, containing a
           ready-to-use <code>PREP</code> folder:
         </p>
         <ul className="plain-list">
           <li>
-            <code>PREP.md</code> — the entry point, with the exact save
+            <code>PREP.md</code>, the entry point, with the exact save
             procedure written inside.
           </li>
           <li>
-            <code>LOG.md</code> — an append-only history, ready for its first
+            <code>LOG.md</code>, an append-only history, ready for its first
             line.
           </li>
           <li>
-            <code>prep-prompt.md</code> — the operating instructions any AI
+            <code>prep-prompt.md</code>, the operating instructions any AI
             reads to learn the standard.
           </li>
           <li>
-            <code>README.txt</code> — plain-English setup, no jargon.
+            <code>README.txt</code>, plain-English setup, no jargon.
           </li>
           <li>
-            <code>memory/</code> — an empty folder for your session snapshots.
+            <code>memory/</code>, an empty folder for your session snapshots.
           </li>
         </ul>
         <p className="prose">
           Nothing runs; nothing phones home. It&apos;s plain text you can read
-          first —{" "}
+          first,{" "}
           <a href={GITHUB_REPO} rel="noopener noreferrer" className="text-link">
             inspect the contents on GitHub
           </a>
@@ -64,7 +64,7 @@ export default function DownloadPage() {
 
       <section aria-labelledby="next-steps-heading" className="steps-block">
         <h2 id="next-steps-heading" className="section-heading">
-          While it downloads — the two steps left
+          While it downloads, the two steps left
         </h2>
         <ol className="big-steps">
           {home.steps
@@ -87,7 +87,7 @@ export default function DownloadPage() {
             ))}
         </ol>
         <p className="prose">
-          That&apos;s the whole setup. From then on, talk normally — and when
+          That&apos;s the whole setup. From then on, talk normally, and when
           a conversation is worth keeping, save it with{" "}
           <a href="https://save.prep.md" className="text-link">
             PREP&nbsp;Save

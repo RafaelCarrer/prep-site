@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 const canonical = "https://prep.md/terms";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — PREP Save",
+  title: "Terms of Use | PREP Save",
   description:
     "The basic terms governing use of PREP Save: a client-side utility that helps you create, organise and verify Markdown project snapshots in your own Google Drive.",
   alternates: { canonical },
   openGraph: {
-    title: "Terms of Use — PREP Save",
+    title: "Terms of Use | PREP Save",
     description:
       "The basic terms governing use of PREP Save, a client-side project-memory utility for your own Google Drive.",
     url: canonical,
@@ -25,7 +25,7 @@ export default function TermsPage() {
         </Link>
       </p>
       <article className="spec-doc">
-        <h1>Terms of Use — PREP Save</h1>
+        <h1>Terms of Use | PREP Save</h1>
         <p>By using PREP Save, you agree to these Terms of Use.</p>
         <ul>
           <li>

@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="site-footer-inner">
         <div className="footer-main">
           <span className="footer-tagline">
-            PREP — an open standard by Rafael Carrer (AMETI)
+            PREP, an open standard by Rafael Carrer (AMETI)
           </span>
           <span className="footer-sub">CC BY 4.0</span>
         </div>

@@ -2,11 +2,11 @@ import { CopyLinkButton } from "./copy-link-button";
 
 const DEFAULT_URL = "https://prep.md";
 const DEFAULT_TEXT =
-  "PREP — the memory belongs to the project, not the AI. Any AI opens the folder and continues where you left off.";
+  "PREP: the memory belongs to the project, not the AI. Any AI opens the folder and continues where you left off.";
 const DEFAULT_TITLE =
-  "PREP — an open standard for AI-readable project folders";
+  "PREP, an open standard for AI-readable project folders";
 const DEFAULT_COPY =
-  "PREP — the memory belongs to the project, not the AI. https://prep.md";
+  "PREP: the memory belongs to the project, not the AI. https://prep.md";
 
 const enc = encodeURIComponent;
 

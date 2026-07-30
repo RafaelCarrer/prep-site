@@ -5,12 +5,12 @@ import { EMAIL } from "@/content/prep-copy";
 const canonical = "https://prep.md/privacy";
 
 export const metadata: Metadata = {
-  title: "Privacy Notice — PREP Save",
+  title: "Privacy Notice | PREP Save",
   description:
     "How PREP Save handles your information: your snapshot content goes straight from your browser to your own Google Drive. PREP Save keeps no server-side copy.",
   alternates: { canonical },
   openGraph: {
-    title: "Privacy Notice — PREP Save",
+    title: "Privacy Notice | PREP Save",
     description:
       "How PREP Save handles your information: your snapshot content goes straight from your browser to your own Google Drive.",
     url: canonical,
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         </Link>
       </p>
       <article className="spec-doc">
-        <h1>Privacy Notice — PREP Save</h1>
+        <h1>Privacy Notice | PREP Save</h1>
         <p>
           Your snapshot content is sent directly from your browser to the
           Google Drive API. PREP Save does not maintain a server-side copy of
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
 
         <p>
           <strong>Google API scope.</strong> PREP Save requests only the{" "}
-          <code>drive.file</code> scope — per-file access limited to the files
+          <code>drive.file</code> scope, per-file access limited to the files
           and folders it creates or that you open with it. It cannot see the
           rest of your Google Drive. PREP Save&apos;s use of information received
           from Google APIs adheres to the{" "}

@@ -25,11 +25,11 @@ export async function generateMetadata({
   if (!entry) return {};
   const canonical = `https://prep.md/learn/${entry.slug}`;
   return {
-    title: `${entry.title} — PREP`,
+    title: `${entry.title} | PREP`,
     description: entry.description,
     alternates: { canonical },
     openGraph: {
-      title: `${entry.title} — PREP`,
+      title: `${entry.title} | PREP`,
       description: entry.description,
       url: canonical,
       type: "article",
@@ -65,8 +65,8 @@ export default async function LearnEntryPage({
       <ShareButtons
         url={url}
         title={entry.title}
-        text={`${entry.title} — PREP`}
-        copyText={`${entry.title} — ${url}`}
+        text={`${entry.title} | PREP`}
+        copyText={`${entry.title}, ${url}`}
       />
     </div>
   );

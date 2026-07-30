@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import AdmZip from "adm-zip";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -73,9 +73,34 @@ for (const p of pages) {
 test("SEO title present", () => {
   assert.ok(
     readFileSync(join(out, "index.html"), "utf8").includes(
-      "PREP — Continue Your Projects in Any AI"
+      "PREP: Continue Your Projects in Any AI"
     )
   );
+});
+
+// House style: no em dashes in published prose. Scripts and code samples are
+// stripped first, because a fenced MAP example is file content, not writing.
+// /spec is excluded: it carries the frozen identification line
+// ("PREP standard v0.3 — https://prep.md") that every saved PREP.md and the
+// prompt must match character for character, so it cannot be reflowed.
+test("no em dashes in published prose", () => {
+  const skip = new Set(["spec"]);
+  const walk = (dir: string): string[] =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+      e.isDirectory()
+        ? skip.has(e.name)
+          ? []
+          : walk(join(dir, e.name))
+        : e.name === "index.html"
+          ? [join(dir, e.name)]
+          : []
+    );
+  for (const fp of walk(out)) {
+    const prose = readFileSync(fp, "utf8")
+      .replace(/<script[\s\S]*?<\/script>/g, "")
+      .replace(/<pre[\s\S]*?<\/pre>/g, "");
+    assert.ok(!prose.includes("—"), `em dash in ${relative(out, fp)}`);
+  }
 });
 
 test("no forbidden routes and no Digita on the PREP site", () => {

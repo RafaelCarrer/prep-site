@@ -1,14 +1,14 @@
 ---
-title: PREP vs AGENTS.md — when to use each
+title: PREP vs AGENTS.md, when to use each
 description: AGENTS.md tells a coding agent how to behave inside your repo. PREP tells any AI everything about your project. They solve different problems and compose well.
 date: 2026-07-17
 audience: builders
 art: map
 ---
-# PREP vs AGENTS.md — when to use each
+# PREP vs AGENTS.md, when to use each
 
 If you work with AI coding tools, you have probably seen `AGENTS.md`: a file
-you drop in a code repository to tell an agent how to behave there — which
+you drop in a code repository to tell an agent how to behave there: which
 commands to run, how to test, what conventions to follow. It is genuinely
 useful, and it is spreading fast.
 
@@ -33,7 +33,7 @@ and its audience is a tool writing or running code.
 
 PREP is broader in one direction and narrower in another. It is not about
 code specifically, and it is not a set of behavior rules. It is a small
-folder — `PREP.md`, `LOG.md`, and a `memory/` folder — that holds the
+folder (`PREP.md`, `LOG.md`, and a `memory/` folder) that holds the
 *context* of a project so that **any** AI can pick it up and continue:
 
 - What this project is and what we're trying to do.
@@ -41,7 +41,7 @@ folder — `PREP.md`, `LOG.md`, and a `memory/` folder — that holds the
 - What's been decided, and what's happening now (the STATUS and the LOG).
 - The rules for this project specifically.
 
-The project can be anything — a menu redesign, a family budget, a novel, a
+The project can be anything: a menu redesign, a family budget, a novel, a
 research thread, or, yes, a piece of software. And the point is portability:
 you can start with ChatGPT, continue with Claude, and hand it to Gemini
 tomorrow, because the memory lives in the folder, not in any one AI.
@@ -59,7 +59,7 @@ of any kind.
 The best part is that you don't choose. A software project can have both: an
 `AGENTS.md` at the repo root telling the coding agent how to build and test,
 and a PREP folder holding the project's story, decisions, and history that
-any AI — not just the coding agent — can read.
+any AI can read, not just the coding agent.
 
 In fact, `AGENTS.md` is exactly the kind of file a PREP MAP would point to:
 
@@ -75,7 +75,7 @@ In fact, `AGENTS.md` is exactly the kind of file a PREP MAP would point to:
 - **Reach for AGENTS.md** when you want a coding agent to behave correctly
   inside a specific repository.
 - **Reach for PREP** when you want the full context of a project to survive
-  across sessions and across different AIs — code or not.
+  across sessions and across different AIs, code or not.
 
 Use both when your project is code and you also want its story to be
 portable. They were built for different jobs, and neither replaces the other.

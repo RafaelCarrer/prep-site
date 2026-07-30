@@ -24,9 +24,9 @@ Fix that, and switching takes ten seconds.
 
 A PREP folder is three things in your cloud drive:
 
-- `PREP.md` — what the project is, where everything lives, the rules.
-- `LOG.md` — what happened, in order.
-- `memory/` — snapshots of past sessions.
+- `PREP.md`, what the project is, where everything lives, the rules.
+- `LOG.md`, what happened, in order.
+- `memory/`, snapshots of past sessions.
 
 That is the whole idea. The permanent stuff lives in files. The chat
 stays disposable.
@@ -89,5 +89,5 @@ which model to marry. You just use whichever one is best this week.
 
 Conversations come and go. Models come and go. Your project should not.
 
-[Save your first project with PREP Save →](https://save.prep.md) — or read
+[Save your first project with PREP Save →](https://save.prep.md), or read
 the [spec](https://prep.md/spec) to see how the folder works underneath.

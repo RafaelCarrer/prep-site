@@ -9,9 +9,9 @@ export const seo: Record<"home" | "spec" | "about" | "learn", RouteSeo> = {
   home: {
     path: "/",
     canonical: "https://prep.md",
-    title: "PREP — Continue Your Projects in Any AI",
+    title: "PREP: Continue Your Projects in Any AI",
     description:
-      "Save a conversation once into your own Google Drive, and any AI — ChatGPT, Claude, Gemini — picks it up exactly where you left off. Free, open, no lock-in.",
+      "Save a conversation once into your own Google Drive, and any AI picks it up exactly where you left off. ChatGPT, Claude, Gemini. Free, open, no lock-in.",
   },
   spec: {
     path: "/spec",
@@ -23,14 +23,14 @@ export const seo: Record<"home" | "spec" | "about" | "learn", RouteSeo> = {
   learn: {
     path: "/learn",
     canonical: "https://prep.md/learn",
-    title: "Learn — PREP.md",
+    title: "Learn | PREP.md",
     description:
       "Writing about keeping project memory across ChatGPT, Claude and Gemini. Two tracks: one if you use AI day to day, one if you build with it.",
   },
   about: {
     path: "/about",
     canonical: "https://prep.md/about",
-    title: "About PREP — Mise en Place for AI Projects",
+    title: "About PREP: Mise en Place for AI Projects",
     description:
       "PREP is an open standard by Rafael Carrer, a kitchen manager in London who builds his own tools. Contact, contribute, and the story behind the standard.",
   },
