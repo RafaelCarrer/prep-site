@@ -159,11 +159,19 @@ function loadAll(): { entry: LearnEntry; body: string }[] {
 }
 
 /**
- * Today in UTC, as YYYY-MM-DD. Dates are compared as plain strings, which
+ * Today in London, as YYYY-MM-DD. Dates are compared as plain strings, which
  * works because the format sorts lexicographically.
+ *
+ * London rather than UTC because that is where the dates in these files are
+ * written. In British Summer Time the two disagree between midnight and 1am,
+ * and a piece dated "today" at half past midnight would silently fail to
+ * publish, which is exactly how this was found. en-CA is used only because it
+ * formats as YYYY-MM-DD.
  */
 function todayISO(): string {
-  return new Date().toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/London",
+  }).format(new Date());
 }
 
 /**
