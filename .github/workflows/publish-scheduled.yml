@@ -1,0 +1,49 @@
+# Publishes scheduled posts.
+#
+# An article dated in the future is committed but held back at build time
+# (see the scheduled-publishing block in src/content/learn.ts). Nothing makes
+# it appear on its own, because the site is a static export: it only exists
+# as it was at the last build. So this rebuilds the site once a day, and any
+# post whose date has arrived goes live.
+#
+# There is no AI and no third-party service in this path, which is the whole
+# point: it is meant to keep working while nobody is watching it.
+#
+# SETUP (once):
+#   1. Vercel > the prep-site project > Settings > Git > Deploy Hooks.
+#      Create one named "daily" on branch main and copy the URL.
+#   2. GitHub > this repo > Settings > Secrets and variables > Actions >
+#      New repository secret, named VERCEL_DEPLOY_HOOK, pasting that URL.
+#
+# The hook URL is a secret: anyone holding it can trigger deploys.
+
+name: Publish scheduled posts
+
+on:
+  schedule:
+    # 06:10 UTC daily. GitHub can run cron a little late under load, which is
+    # fine for a blog. Nothing breaks if a run is skipped: the next one picks
+    # up every post that has come due.
+    - cron: "10 6 * * *"
+  # So a post can also be pushed live by hand, from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the Vercel rebuild
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "VERCEL_DEPLOY_HOOK is not set. See the setup notes at the"
+            echo "top of this file."
+            exit 1
+          fi
+          code=$(curl -X POST -s -o /dev/null -w "%{http_code}" "$HOOK")
+          echo "Vercel deploy hook responded $code"
+          case "$code" in
+            2*) echo "Rebuild queued." ;;
+            *) echo "Unexpected response, the rebuild may not have started."; exit 1 ;;
+          esac
